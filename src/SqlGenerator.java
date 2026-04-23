@@ -78,10 +78,6 @@ public class SqlGenerator {
 
     }
 
-    public static void Teachers(){
-
-    }
-
 
 
 }
