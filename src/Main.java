@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        SqlGenerator.Departments();
+        SqlGenerator hawk = new SqlGenerator();
+        hawk.Rooms();
+        System.out.println(hawk.RoomList);
     }
 }
