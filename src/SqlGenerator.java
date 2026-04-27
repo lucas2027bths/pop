@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class SqlGenerator {
 
+    public static void CourseTypes(){
+        System.out.print("INSERT INTO CourseTypes (course_TYPEID,course_type) VALUES (1,'Regents')");
+        System.out.print("INSERT INTO CourseTypes (course_TYPEID,course_type) VALUES (1,'AP')");
+        System.out.print("INSERT INTO CourseTypes (course_TYPEID,course_type) VALUES (1,'Elective')");
+    }
     public static void Rooms(){
 
         for (int floor = 0; floor <= 8;floor++){
@@ -77,7 +82,12 @@ public class SqlGenerator {
         }
 
     }
+    public static void Courses() throws FileNotFoundException {
+        Scanner scan = new Scanner(new File("src/courses"));
+        while(scan.hasNextLine()){
+            String name = scan.nextLine();
 
-
+        }
+    }
 
 }
