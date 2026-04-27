@@ -81,5 +81,11 @@ public class SqlGenerator {
         }
 
     }
+    public void StudentInitalizer() throws FileNotFoundException {
+        Scanner scan = new Scanner(new File("src/students"));
+            while(scan.hasNextLine()){
+                String name = scan.nextLine();
 
+            }
+        }
 }
