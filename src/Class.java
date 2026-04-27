@@ -18,11 +18,18 @@ public class Class {
         Students.add(a);
     }
     public void makeAssignments (){
+        /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
-            Assignments.add(new Assignment((name,i,"randome"));
+            String AssignmentName = this.name + "work" + i;
+            Assignments.add(new Assignment(0,i,"AssignmentName"));
         }
         for (int i = 12; i < 15; i++) {
-
+            String AssignmentName = this.name + "work" + i;
+            Assignments.add(new Assignment(1,i,"AssignmentName"));
+        }
+        for (int i = 0; i < Assignments.size(); i++) {
+            System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
+                    " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + id + ")\"");
         }
     }
     public void giveGrade(){
