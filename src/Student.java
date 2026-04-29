@@ -4,6 +4,17 @@ public class Student {
     private int roster;
     private int id;
 
+    public Student (){
+
+    }
+
+
+    public Student (String first, String last, int roster, int id){
+        this.first = first;
+        this.last = last;
+        this.id=id;
+        this.roster=roster;
+    }
     public int getRoster() {
         return roster;
     }
@@ -11,7 +22,6 @@ public class Student {
         return first;
     }
     public String getLast() {return last;}
-
     public int getId() {
         return id;
     }
