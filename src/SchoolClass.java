@@ -1,16 +1,18 @@
 import java.util.ArrayList;
 
-public class Class {
+public class SchoolClass {
     private String name;
-    private int type;
 //    private ArrayList<Student> Students;
     private ArrayList<Assignment> Assignments;
-    private int id;
+    private int ID;
+    private Teacher teacher;
     private Room room;
 
-    public Class (int type, String name){
+    public SchoolClass(int ID, String name, Teacher teacher, Room room){
         this.name = name;
-        this.type = type;
+        this.ID = ID;
+        this.teacher = teacher;
+        this.room = room;
         System.out.println("echo \"INSERT INTO Courses(name, type, id) VALUES(" + name + "," + type + "," + id + "(\"");
     }
 //

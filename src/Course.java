@@ -9,6 +9,10 @@ public class Course {
         this.course_type_ID = course_type_ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString(){
         return "INSERT INTO Courses VALUES ("+ID+",'" + name +"'," + course_type_ID + ");";
