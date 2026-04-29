@@ -4,6 +4,11 @@ public class Student {
     private int roster;
     private int id;
 
+    public Student (){
+
+    }
+
+
     public int getRoster() {
         return roster;
     }
@@ -11,7 +16,6 @@ public class Student {
         return first;
     }
     public String getLast() {return last;}
-
     public int getId() {
         return id;
     }
