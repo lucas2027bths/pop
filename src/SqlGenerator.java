@@ -1,15 +1,16 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class SqlGenerator {
     public ArrayList<Department> DepartmentList = new ArrayList<>();
     public ArrayList<Teacher> TeacherList = new ArrayList<>();
     public ArrayList<Room> RoomList = new ArrayList<>();
+    public ArrayList<Course> CourseList = new ArrayList<>();
     public ArrayList<Student> StudentList = new ArrayList<>();
-
-
+    public ArrayList<SchoolClass> ClassList = new ArrayList<>();
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
@@ -88,18 +89,34 @@ public class SqlGenerator {
         Scanner scan = new Scanner(new File("src/students"));
         int count = 0;
         while(scan.hasNextLine()){
-                String[] name = scan.nextLine().split(" ");
-                StudentList.add(new Student(name[0],name[1],1,count));
-                count++;
-            }
+            String[] name = scan.nextLine().split(" ");
+            StudentList.add(new Student(name[0],name[1],1,count));
+            count++;
+        }
     }
 
-
     public void ClassesInitializer() throws FileNotFoundException {
+            Random ran = new Random();
+            int id = 0;
+        for (int x = 0; x < CourseList.size(); x++){
+
+            for (int y = 0; y < ran.nextInt(1,5); y++){
+                ClassList.add(new SchoolClass(id,CourseList.get(x).getName()));
+                id++;
+            }
+
+
+        }
+
+
+    }
+    public void CourseInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner (new File("src/courses"));
+        int x = 0;
         while(scan.hasNextLine()){
             String name = scan.nextLine();
-
+            String[] nameStuff = name.split(" [|] ",2);
+            CourseList.add(new Course(x,nameStuff[0],Integer.parseInt(nameStuff[1])));
         }
     }
 }
