@@ -9,7 +9,7 @@ public class Roster {
     public Roster(ArrayList<Class> ClassList) {
         Classes = new LinkedHashSet<>();
         while (Classes.size() < 10) {
-            Classes.add(ClassList.get( Math.random() * ClassList.size() ))
+            Classes.add(ClassList.get( (int) (Math.random() * ClassList.size()) ));
         }
 
         ArrayList<Class> ClassArrayList = new ArrayList<>(Classes);
@@ -18,7 +18,7 @@ public class Roster {
             Class temp = ClassArrayList.get(i);
             int j = i;
 
-            while ( int j > 0 && temp.getPeriod() < ClassArrayList.get(j - 1).getPeriod() ) {
+            while ( j > 0 && temp.getPeriod() < ClassArrayList.get(j - 1).getPeriod() ) {
                 ClassArrayList.set(j, ClassArrayList.get(j - 1));
                 j--;
             }
