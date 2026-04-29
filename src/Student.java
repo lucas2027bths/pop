@@ -9,6 +9,12 @@ public class Student {
     }
 
 
+    public Student (String first, String last, int roster, int id){
+        this.first = first;
+        this.last = last;
+        this.id=id;
+        this.roster=roster;
+    }
     public int getRoster() {
         return roster;
     }
