@@ -1,35 +1,48 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Class {
     private String name;
     private int type;
-    private ArrayList<Student> Students;
-    private ArrayList<Assignment> Assignments;
+    private ArrayList<Student> Students = new ArrayList<>();
+    private ArrayList<Assignment> Assignments = new ArrayList<>();
+    private ArrayList<String> randomNames = new ArrayList<>();
     private int id;
     private Room room;
 
-    public Class (int type, String name){
+    public Class (int type, String name) throws FileNotFoundException {
         this.name = name;
         this.type = type;
-        System.out.println("echo \"INSERT INTO Courses(name, type, id) VALUES(" + name + "," + type + "," + id + "(\"");
+        Scanner scan = new Scanner(new File("src/randomAssign"));
+
+        while (scan.hasNext()){
+            randomNames.add(scan.nextLine());
+        }
+
     }
 
     public void addStudents (Student a){
         Students.add(a);
     }
-    public void makeAssignments (){
+    public void makeAssignments ()  {
         /// this SHOULD ONLY RUN ONCE
+
+        Random random = new Random();
+
         for (int i = 0; i < 12; i++) {
-            String AssignmentName = this.name + "work" + i;
-            Assignments.add(new Assignment(0,i,"AssignmentName"));
+            String AssignmentName = randomNames.get(random.nextInt(randomNames.size()-1));
+            Assignments.add(new Assignment(0,i,AssignmentName));
         }
         for (int i = 12; i < 15; i++) {
-            String AssignmentName = this.name + "work" + i;
-            Assignments.add(new Assignment(1,i,"AssignmentName"));
+            String AssignmentName = randomNames.get(random.nextInt(randomNames.size()-1));
+            Assignments.add(new Assignment(1,i,AssignmentName));
         }
         for (int i = 0; i < Assignments.size(); i++) {
-            System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
-                    " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + id + ")\"");
+            System.out.println(Assignments.get(i));
         }
     }
     public void giveGrade(){
@@ -42,5 +55,9 @@ public class Class {
 
             }
         }
+    }
+    @Override
+    public String toString(){
+       return ("echo \"INSERT INTO Courses(name, type, id) VALUES(" + name + "," + type + "," + id + "(\"");
     }
 }

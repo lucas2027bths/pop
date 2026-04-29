@@ -19,4 +19,9 @@ public class Assignment {
     public String getName() {
         return name;
     }
+
+    public String toString(){
+       return "\"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
+                " (" + "'" + name + "'," + type +"," + id + ")\"";
+    }
 }
