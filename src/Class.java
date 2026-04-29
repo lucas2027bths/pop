@@ -21,11 +21,11 @@ public class Class {
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
-            Assignments.add(new Assignment(0,i,"AssignmentName"));
+            Assignments.add(new Assignment(0,i,AssignmentName));
         }
         for (int i = 12; i < 15; i++) {
             String AssignmentName = this.name + "work" + i;
-            Assignments.add(new Assignment(1,i,"AssignmentName"));
+            Assignments.add(new Assignment(1,i,AssignmentName));
         }
         for (int i = 0; i < Assignments.size(); i++) {
             System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
