@@ -7,6 +7,9 @@ public class SqlGenerator {
     public ArrayList<Department> DepartmentList = new ArrayList<>();
     public ArrayList<Teacher> TeacherList = new ArrayList<>();
     public ArrayList<Room> RoomList = new ArrayList<>();
+    public ArrayList<Student> StudentList = new ArrayList<>();
+
+
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
@@ -83,11 +86,14 @@ public class SqlGenerator {
     }
     public void StudentInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File("src/students"));
-            while(scan.hasNextLine()){
-                String name = scan.nextLine();
-
+        int count = 0;
+        while(scan.hasNextLine()){
+                String[] name = scan.nextLine().split(" ");
+                StudentList.add(new Student(name[0],name[1],1,count));
+                count++;
             }
     }
+
 
     public void ClassesInitializer() throws FileNotFoundException {
         Scanner scan = new Scanner (new File("src/courses"));

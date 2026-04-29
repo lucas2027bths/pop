@@ -25,4 +25,8 @@ public class Student {
     public int getId() {
         return id;
     }
+
+    public String toString(){
+        return "INSERT INTO Student(id, roster, first, last) VALUES ("+ id+ "," + roster +",'" + first + " " + last +"');";
+    }
 }
