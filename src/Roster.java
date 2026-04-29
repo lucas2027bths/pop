@@ -6,12 +6,14 @@ public class Roster {
     private LinkedHashSet<Class> Classes;
     private Student student;
 
-    public Roster(LinkedHashSet<Class> Classes) {
+    public Roster(ArrayList<Class> ClassList) {
+        Classes = new LinkedHashSet<>();
         while (Classes.size() < 10) {
-            ArrayList<Class> ClassList = SqlGenerator.getClassList();
-            Classes.add(ClassList.getLast( Math.random() * ClassList.size() ))
+            Classes.add(ClassList.get( Math.random() * ClassList.size() ))
         }
+
         ArrayList<Class> ClassArrayList = new ArrayList<>(Classes);
+
         for (int i = 1; i < Classes.size(); i++) {
             Class temp = ClassArrayList.get(i);
             int j = i;
@@ -22,7 +24,9 @@ public class Roster {
             }
             ClassArrayList.set(j, temp);
         }
+
         Classes = new LinkedHashSet<>(ClassArrayList);
+
         ID++;
 
     }
