@@ -3,11 +3,17 @@ public class Teacher {
     private String first;
     private String last;
     private int DEPTID;
+    public boolean[] booked;
     public Teacher(int ID, String first, String last, int DEPTID){
         this.ID = ID;
         this.first = first;
         this.last = last;
         this.DEPTID = DEPTID;
+        booked = new boolean[10];
+    }
+
+    public int getID() {
+        return ID;
     }
 
     @Override

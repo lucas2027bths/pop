@@ -13,6 +13,10 @@ public class Course {
         return name;
     }
 
+    public int getID() {
+        return ID;
+    }
+
     @Override
     public String toString(){
         return "INSERT INTO Courses VALUES ("+ID+",'" + name +"'," + course_type_ID + ");";

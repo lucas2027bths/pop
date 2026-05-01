@@ -96,13 +96,41 @@ public class SqlGenerator {
     }
 
     public void ClassesInitializer() throws FileNotFoundException {
-            Random ran = new Random();
-            int id = 0;
+        Random ran = new Random();
+        int room = 0;
+        int teach = 0;
+        int period = 1;
+        int id = 0;
         for (int x = 0; x < CourseList.size(); x++){
 
-            for (int y = 0; y < ran.nextInt(1,5); y++){
-                ClassList.add(new SchoolClass(id,CourseList.get(x).getName()));
+            int randomNum = ran.nextInt(1,5);
+            for (int y = 0; y < randomNum; y++){
+
+                if (period > 10){
+                    period = 1;
+                    room++;
+                }
+
+                Room currentRoom = RoomList.get(room);
+                currentRoom.booked[period-1] = true;
+                Teacher currentTeacher = null;
+
+                for (int j = 0; j < TeacherList.size(); j++){
+                    Teacher teacher = TeacherList.get(j);
+                    if (!teacher.booked[period - 1]){
+                        teacher.booked[period-1] = true;
+                        currentTeacher = teacher;
+                        break;
+                    }
+                }
+
+                if (currentTeacher == null){
+                    System.out.println("something went wrong idk tun g tung");
+                    return;
+                }
+                ClassList.add(new SchoolClass(id,CourseList.get(x).getName(),currentTeacher,currentRoom,period,CourseList.get(x)));
                 id++;
+                period++;
             }
 
 

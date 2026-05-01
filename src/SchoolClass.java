@@ -7,13 +7,16 @@ public class SchoolClass {
     private int ID;
     private Teacher teacher;
     private Room room;
+    private int period;
+    private Course CourseParent;
 
-    public SchoolClass(int ID, String name, Teacher teacher, Room room){
+    public SchoolClass(int ID, String name, Teacher teacher, Room room, int period, Course CourseParent){
         this.name = name;
         this.ID = ID;
         this.teacher = teacher;
         this.room = room;
-        System.out.println("echo \"INSERT INTO Courses(name, type, id) VALUES(" + name + "," + type + "," + id + "(\"");
+        this.period = period;
+        this.CourseParent = CourseParent;
     }
 //
 //    public void addStudents (Student a){
@@ -31,9 +34,13 @@ public class SchoolClass {
         }
         for (int i = 0; i < Assignments.size(); i++) {
             System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
-                    " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + id + ")\"");
+                    " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + ID + ")\"");
         }
     }
+    public String toString (){
+        return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ")";
+    }
+
 //    public void giveGrade(){
 //        for (int i = 0; i < Students.size(); i++) {
 //            int studentID = Students.get(i).getId();

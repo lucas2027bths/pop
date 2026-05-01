@@ -1,7 +1,7 @@
 public class Room {
-    private int ID;
+    public int ID;
     private String location;
-    private boolean[] booked;
+    public boolean[] booked;
 
     public Room(int ID, String name){
         this.ID = ID;
@@ -9,14 +9,6 @@ public class Room {
         booked = new boolean[10];
     }
 
-
-    public boolean[] getBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean[] booked) {
-        this.booked = booked;
-    }
 
     @Override
     public String toString(){
