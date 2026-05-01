@@ -10,7 +10,7 @@ public class Main {
         String courses = scan2.nextLine();
         while (scan2.hasNext()){
             for (int i = 0; i < 30; i++) {
-                courses
+//                courses
             }
         }
     }

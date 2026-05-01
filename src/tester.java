@@ -8,6 +8,7 @@ public class tester {
         sqlGenerator.DepartmentsAndTeacherInitalizer();
         sqlGenerator.CourseInitalizer();
         sqlGenerator.ClassesInitializer();
+        System.out.println(sqlGenerator.CourseList);
         System.out.println(sqlGenerator.ClassList);
     }
 }

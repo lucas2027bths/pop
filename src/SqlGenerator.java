@@ -128,7 +128,7 @@ public class SqlGenerator {
                     System.out.println("something went wrong idk tun g tung");
                     return;
                 }
-                ClassList.add(new SchoolClass(id,CourseList.get(x).getName(),currentTeacher,currentRoom,period,CourseList.get(x)));
+                ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
                 id++;
                 period++;
             }
@@ -145,6 +145,7 @@ public class SqlGenerator {
             String name = scan.nextLine();
             String[] nameStuff = name.split(" [|] ",2);
             CourseList.add(new Course(x,nameStuff[0],Integer.parseInt(nameStuff[1])));
+            x++;
         }
     }
 }

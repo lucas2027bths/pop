@@ -10,8 +10,7 @@ public class SchoolClass {
     private int period;
     private Course CourseParent;
 
-    public SchoolClass(int ID, String name, Teacher teacher, Room room, int period, Course CourseParent){
-        this.name = name;
+    public SchoolClass(int ID,Teacher teacher, Room room, int period, Course CourseParent){
         this.ID = ID;
         this.teacher = teacher;
         this.room = room;
