@@ -1,21 +1,32 @@
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 
 public class Roster {
     private static int ID;
-    private LinkedHashSet<Class> Classes;
+    private ArrayList<SchoolClass> Classes;
     private Student student;
 
-    public Roster(ArrayList<Class> ClassList) {
-        Classes = new LinkedHashSet<>();
-        while (Classes.size() < 10) {
-            Classes.add(ClassList.get( (int) (Math.random() * ClassList.size()) ));
+    public Roster(Student student) {
+        Classes = new ArrayList<>();
+        ArrayList<Integer> ClassesAdded = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            ArrayList<SchoolClass> ClassList = new ArrayList<>();
+            for (SchoolClass schoolClass : SqlGenerator.ClassList) {
+                if (schoolClass.getPeriod() == i) {
+                    ClassList.add(schoolClass);
+                }
+            }
+            int rand = (int) ( Math.random() * ClassList.size() );
+            if (!ClassesAdded.contains(rand)) {
+                ClassesAdded.add(rand);
+                Classes.add(ClassList.get(rand));
+                ClassList.get(rand).addStudents(student);
+            }
         }
 
-        ArrayList<Class> ClassArrayList = new ArrayList<>(Classes);
-
+        /*
         for (int i = 1; i < Classes.size(); i++) {
-            Class temp = ClassArrayList.get(i);
+            SchoolClass currentClass = Classes.get(i);
+            if (currentClass.get)
             int j = i;
 
             while ( j > 0 && temp.getPeriod() < ClassArrayList.get(j - 1).getPeriod() ) {
@@ -25,12 +36,15 @@ public class Roster {
             ClassArrayList.set(j, temp);
         }
 
-        Classes = new LinkedHashSet<>(ClassArrayList);
+         */
 
         ID++;
 
     }
 
-
+    @Override
+    public String toString() {
+        return student + " " + Classes;
+    }
 }
 

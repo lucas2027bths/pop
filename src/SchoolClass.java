@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class SchoolClass {
     private String name;
-//    private ArrayList<Student> Students;
+    private ArrayList<Student> Students;
     private ArrayList<Assignment> Assignments;
     private int ID;
     private Teacher teacher;
@@ -17,10 +17,10 @@ public class SchoolClass {
         this.period = period;
         this.CourseParent = CourseParent;
     }
-//
-//    public void addStudents (Student a){
-//        Students.add(a);
-//    }
+
+    public void addStudents (Student a){
+       Students.add(a);
+    }
     public void makeAssignments (){
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
@@ -35,6 +35,10 @@ public class SchoolClass {
             System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
                     " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + ID + ")\"");
         }
+    }
+
+    public int getPeriod() {
+        return period;
     }
     public String toString (){
         return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ")";

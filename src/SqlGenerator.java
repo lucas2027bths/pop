@@ -9,8 +9,8 @@ public class SqlGenerator {
     public ArrayList<Teacher> TeacherList = new ArrayList<>();
     public ArrayList<Room> RoomList = new ArrayList<>();
     public ArrayList<Course> CourseList = new ArrayList<>();
-    public ArrayList<Student> StudentList = new ArrayList<>();
-    public ArrayList<SchoolClass> ClassList = new ArrayList<>();
+    public static ArrayList<Student> StudentList = new ArrayList<>();
+    public static ArrayList<SchoolClass> ClassList = new ArrayList<>();
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
