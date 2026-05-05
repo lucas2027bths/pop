@@ -98,7 +98,7 @@ public class SqlGenerator {
         int count = 0;
         while(scan.hasNextLine()){
             String[] name = scan.nextLine().split(" ");
-            StudentList.add(new Student(name[0],name[1],1,count));
+            StudentList.add(new Student(name[0],name[1],count));
             count++;
         }
     }
@@ -162,7 +162,8 @@ public class SqlGenerator {
         }
     }
 
-    public void rosterInitializer() throws FileNotFoundException {
+    public void rosterInitializer  () throws FileNotFoundException {
+        int maxStudents = StudentList.size() / ClassList.size();
         for (Student student : StudentList) {
             RosterList.add(new Roster(student,ClassList));
         }

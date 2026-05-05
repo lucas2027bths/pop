@@ -1,7 +1,7 @@
 public class Student {
     private String first;
     private String last;
-    private int roster;
+    private Roster roster;
     private int id;
 
     public Student (){
@@ -9,13 +9,12 @@ public class Student {
     }
 
 
-    public Student (String first, String last, int roster, int id){
+    public Student (String first, String last,int id){
         this.first = first;
         this.last = last;
         this.id=id;
-        this.roster=roster;
     }
-    public int getRoster() {
+    public Roster getRoster() {
         return roster;
     }
     public String getFirst() {
@@ -24,6 +23,10 @@ public class Student {
     public String getLast() {return last;}
     public int getId() {
         return id;
+    }
+
+    public void setRoster(Roster roster) {
+        this.roster = roster;
     }
 
     public String toString(){

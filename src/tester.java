@@ -9,7 +9,9 @@ public class tester {
         generator.classesInitializer();
         generator.studentInitalizer();
         generator.rosterInitializer();
-        System.out.println(generator.RosterList);
+        for (Student stud : generator.StudentList){
+            System.out.println(stud.getRoster());
+        }
 
 
 //        System.out.println(sqlGenerator.RoomList);

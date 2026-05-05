@@ -18,6 +18,7 @@ public class Roster {
             int rand = (int) ( Math.random() * (ClassList.size() - 1) );
             Classes.add(ClassList.get(rand));
             ClassList.get(rand).addStudents(student);
+            student.setRoster(this);
         }
 
         /*
@@ -41,7 +42,7 @@ public class Roster {
 
     @Override
     public String toString() {
-        return "INSERT INTO Rosters(period1_ClassID int,\period2_ClassID int,\n" +
+        return "INSERT INTO Rosters(period1_ClassID int,period2_ClassID int,\n" +
                 "        period3_ClassID int,\n" +
                 "        period4_ClassID int,\n" +
                 "        period5_ClassID int,\n" +
