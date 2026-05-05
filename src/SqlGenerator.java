@@ -103,6 +103,25 @@ public class SqlGenerator {
         }
     }
 
+    public void GradeInitializer(){
+        for (int i = 0; i < 5000; i++) {
+            Student CurrStudent = StudentList.get(i);
+            int CurrRoster= CurrStudent.getRoster();
+            Roster CurrRosterObj=RosterList.get(CurrRoster);
+            ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
+            for (int j = 0; j < 10; j++) {
+                for (int k = 0; k < 15; k++) {
+                    SchoolClass CurrClass = CurrClassList.get(j);
+                    for (Assignment each : CurrClass.getAssignments()){
+                        int AssignmentID = CurrClass.getID() * 15 + k;
+                        System.out.println("echo \" INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
+                                + (Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ")\"");
+                    }
+                }
+            }
+        }
+    }
+
 
 
     public void classesInitializer() throws FileNotFoundException {
@@ -143,7 +162,9 @@ public class SqlGenerator {
                 period++;
             }
 
-
+        }
+        for(SchoolClass each : ClassList){
+            System.out.println(each);
         }
 
 
