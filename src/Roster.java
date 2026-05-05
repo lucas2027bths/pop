@@ -39,6 +39,9 @@ public class Roster {
         ID++;
 
     }
+    public ArrayList<SchoolClass> getClasses(){
+        return Classes;
+    }
 
     @Override
     public String toString() {

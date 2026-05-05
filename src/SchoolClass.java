@@ -10,8 +10,8 @@ public class SchoolClass {
     private int period;
     private Course CourseParent;
 
-    public SchoolClass(int ID,Teacher teacher, Room room, int period, Course CourseParent){
-        this.Students = new ArrayList<>();
+    public SchoolClass(int ID, Teacher teacher, Room room, int period, Course CourseParent){
+        this.name = name;
         this.ID = ID;
         this.teacher = teacher;
         this.room = room;
@@ -38,10 +38,17 @@ public class SchoolClass {
                     " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + ID + ")\"");
         }
     }
+    public ArrayList<Assignment> getAssignments(){
+        return Assignments;
+    }
 
     public int getPeriod() {
         return period;
     }
+    public int getID(){
+        return ID;
+    }
+
     public String toString (){
         return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ")";
     }
