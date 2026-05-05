@@ -48,6 +48,7 @@ public class SchoolClass {
     public int getID(){
         return ID;
     }
+
     public String toString (){
         return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ")";
     }
