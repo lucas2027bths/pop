@@ -13,7 +13,7 @@ public class SqlGenerator {
     public ArrayList<SchoolClass> ClassList = new ArrayList<>();
     public ArrayList<Roster> RosterList = new ArrayList<>();
 
-    public void RoomInitalizer(){
+    public void roomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
 
@@ -55,7 +55,7 @@ public class SqlGenerator {
     }
 
 
-    public void DepartmentsAndTeacherInitalizer() throws FileNotFoundException {
+    public void departmentsAndTeacherInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File("src/teachers"));
         String[] depts = {"Biological Sciences",
                 "Chemistry",
@@ -93,7 +93,7 @@ public class SqlGenerator {
 
 
 
-    public void StudentInitalizer() throws FileNotFoundException {
+    public void studentInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File("src/students"));
         int count = 0;
         while(scan.hasNextLine()){
@@ -105,7 +105,7 @@ public class SqlGenerator {
 
 
 
-    public void ClassesInitializer() throws FileNotFoundException {
+    public void classesInitializer() throws FileNotFoundException {
         Random ran = new Random();
         int room = 0;
         int teach = 0;
@@ -151,7 +151,7 @@ public class SqlGenerator {
 
 
 
-    public void CourseInitalizer() throws FileNotFoundException {
+    public void courseInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner (new File("src/courses"));
         int x = 0;
         while(scan.hasNextLine()){
@@ -162,7 +162,7 @@ public class SqlGenerator {
         }
     }
 
-    public void RosterInitializer() throws FileNotFoundException {
+    public void rosterInitializer() throws FileNotFoundException {
         for (Student student : StudentList) {
             RosterList.add(new Roster(student,ClassList));
         }
