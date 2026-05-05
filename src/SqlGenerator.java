@@ -11,6 +11,7 @@ public class SqlGenerator {
     public ArrayList<Course> CourseList = new ArrayList<>();
     public ArrayList<Student> StudentList = new ArrayList<>();
     public ArrayList<SchoolClass> ClassList = new ArrayList<>();
+    public ArrayList<Assignment> AssignmentList = new ArrayList<>();
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
@@ -125,7 +126,7 @@ public class SqlGenerator {
                 }
 
                 if (currentTeacher == null){
-                    System.out.println("something went wrong idk tun g tung");
+                    System.out.println("something went wrong");
                     return;
                 }
                 ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
