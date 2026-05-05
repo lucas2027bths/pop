@@ -11,6 +11,7 @@ public class SqlGenerator {
     public ArrayList<Course> CourseList = new ArrayList<>();
     public static ArrayList<Student> StudentList = new ArrayList<>();
     public static ArrayList<SchoolClass> ClassList = new ArrayList<>();
+    public ArrayList<Roster> RosterList = new ArrayList<>();
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
@@ -146,6 +147,12 @@ public class SqlGenerator {
             String[] nameStuff = name.split(" [|] ",2);
             CourseList.add(new Course(x,nameStuff[0],Integer.parseInt(nameStuff[1])));
             x++;
+        }
+    }
+
+    public void RosterInitializer() throws FileNotFoundException {
+        for (Student student : StudentList) {
+            RosterList.add(new Roster(student));
         }
     }
 }
