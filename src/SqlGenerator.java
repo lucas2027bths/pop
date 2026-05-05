@@ -9,9 +9,10 @@ public class SqlGenerator {
     public ArrayList<Teacher> TeacherList = new ArrayList<>();
     public ArrayList<Room> RoomList = new ArrayList<>();
     public ArrayList<Course> CourseList = new ArrayList<>();
-    public static ArrayList<Student> StudentList = new ArrayList<>();
-    public static ArrayList<SchoolClass> ClassList = new ArrayList<>();
+    public ArrayList<Student> StudentList = new ArrayList<>();
+    public ArrayList<SchoolClass> ClassList = new ArrayList<>();
     public ArrayList<Roster> RosterList = new ArrayList<>();
+
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
@@ -52,6 +53,8 @@ public class SqlGenerator {
         }
 
     }
+
+
     public void DepartmentsAndTeacherInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File("src/teachers"));
         String[] depts = {"Biological Sciences",
@@ -86,6 +89,10 @@ public class SqlGenerator {
         }
 
     }
+
+
+
+
     public void StudentInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File("src/students"));
         int count = 0;
@@ -95,6 +102,8 @@ public class SqlGenerator {
             count++;
         }
     }
+
+
 
     public void ClassesInitializer() throws FileNotFoundException {
         Random ran = new Random();
@@ -126,7 +135,7 @@ public class SqlGenerator {
                 }
 
                 if (currentTeacher == null){
-                    System.out.println("something went wrong idk tun g tung");
+                    System.out.println("something went wrong");
                     return;
                 }
                 ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
@@ -139,6 +148,9 @@ public class SqlGenerator {
 
 
     }
+
+
+
     public void CourseInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner (new File("src/courses"));
         int x = 0;
@@ -152,7 +164,7 @@ public class SqlGenerator {
 
     public void RosterInitializer() throws FileNotFoundException {
         for (Student student : StudentList) {
-            RosterList.add(new Roster(student));
+            RosterList.add(new Roster(student,ClassList));
         }
     }
 }

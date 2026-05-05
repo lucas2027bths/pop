@@ -5,12 +5,12 @@ public class Roster {
     private ArrayList<SchoolClass> Classes;
     private Student student;
 
-    public Roster(Student student) {
+    public Roster(Student student, ArrayList<SchoolClass> ClassList) {
         Classes = new ArrayList<>();
         ArrayList<Integer> ClassesAdded = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            ArrayList<SchoolClass> ClassList = new ArrayList<>();
-            for (SchoolClass schoolClass : SqlGenerator.ClassList) {
+//            ArrayList<SchoolClass> ClassList = new ArrayList<>();
+            for (SchoolClass schoolClass : ClassList) {
                 if (schoolClass.getPeriod() == i) {
                     ClassList.add(schoolClass);
                 }

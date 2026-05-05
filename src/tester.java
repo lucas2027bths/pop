@@ -3,28 +3,22 @@ import java.util.ArrayList;
 
 public class tester {
     public static void main(String[] args) throws FileNotFoundException {
-        SqlGenerator sqlGenerator = new SqlGenerator();
-        sqlGenerator.ClassesInitializer();
-        ArrayList<Roster> rosters = new ArrayList<>();
-        for (Student student : SqlGenerator.StudentList) {
-            Roster roster = new Roster(student);
-            rosters.add(roster);
-        }
-        for (Roster roster : rosters) {
-            System.out.println(roster);
-        }
-        /*
-        sqlGenerator.RoomInitalizer();
-        sqlGenerator.DepartmentsAndTeacherInitalizer();
-        sqlGenerator.CourseInitalizer();
-        sqlGenerator.ClassesInitializer();
+        SqlGenerator generator = new SqlGenerator();
+        generator.RoomInitalizer();
+        generator.DepartmentsAndTeacherInitalizer();
+        generator.CourseInitalizer();
+        generator.ClassesInitializer();
+        generator.StudentInitalizer();
+        generator.RosterInitializer();
+        System.out.println(generator.RosterList);
 
-        System.out.println(sqlGenerator.RoomList);
-        System.out.println(sqlGenerator.DepartmentList);
-        System.out.println(sqlGenerator.TeacherList);
-        System.out.println(sqlGenerator.CourseList);
-        System.out.println(sqlGenerator.ClassList);
 
-         */
+//        System.out.println(sqlGenerator.RoomList);
+//        System.out.println(sqlGenerator.DepartmentList);
+//        System.out.println(sqlGenerator.TeacherList);
+//        System.out.println(sqlGenerator.CourseList);
+//        System.out.println(sqlGenerator.ClassList);
+
+
     }
 }
