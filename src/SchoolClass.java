@@ -11,6 +11,7 @@ public class SchoolClass {
     private Course CourseParent;
 
     public SchoolClass(int ID,Teacher teacher, Room room, int period, Course CourseParent){
+        this.Students = new ArrayList<>();
         this.ID = ID;
         this.teacher = teacher;
         this.room = room;

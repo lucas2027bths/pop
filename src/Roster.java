@@ -5,22 +5,19 @@ public class Roster {
     private ArrayList<SchoolClass> Classes;
     private Student student;
 
-    public Roster(Student student, ArrayList<SchoolClass> ClassList) {
+    public Roster(Student student, ArrayList<SchoolClass> FullClassList) {
         Classes = new ArrayList<>();
-        ArrayList<Integer> ClassesAdded = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-//            ArrayList<SchoolClass> ClassList = new ArrayList<>();
-            for (SchoolClass schoolClass : ClassList) {
+        this.student = student;
+        for (int i = 1; i <= 10; i++) {
+            ArrayList<SchoolClass> ClassList = new ArrayList<>();
+            for (SchoolClass schoolClass : FullClassList) {
                 if (schoolClass.getPeriod() == i) {
                     ClassList.add(schoolClass);
                 }
             }
-            int rand = (int) ( Math.random() * ClassList.size() );
-            if (!ClassesAdded.contains(rand)) {
-                ClassesAdded.add(rand);
-                Classes.add(ClassList.get(rand));
-                ClassList.get(rand).addStudents(student);
-            }
+            int rand = (int) ( Math.random() * (ClassList.size() - 1) );
+            Classes.add(ClassList.get(rand));
+            ClassList.get(rand).addStudents(student);
         }
 
         /*
@@ -44,7 +41,7 @@ public class Roster {
 
     @Override
     public String toString() {
-        return student + " " + Classes;
+        return "INSERT INTO Rosters(";
     }
 }
 
