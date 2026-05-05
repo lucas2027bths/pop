@@ -9,9 +9,9 @@ public class SqlGenerator {
     public ArrayList<Teacher> TeacherList = new ArrayList<>();
     public ArrayList<Room> RoomList = new ArrayList<>();
     public ArrayList<Course> CourseList = new ArrayList<>();
-    public ArrayList<Student> StudentList = new ArrayList<>();
-    public ArrayList<SchoolClass> ClassList = new ArrayList<>();
-    public ArrayList<Assignment> AssignmentList = new ArrayList<>();
+    public static ArrayList<Student> StudentList = new ArrayList<>();
+    public static ArrayList<SchoolClass> ClassList = new ArrayList<>();
+    public ArrayList<Roster> RosterList = new ArrayList<>();
     public void RoomInitalizer(){
         int id = 0;
         for (int floor = 0; floor <= 8;floor++){
@@ -126,7 +126,7 @@ public class SqlGenerator {
                 }
 
                 if (currentTeacher == null){
-                    System.out.println("something went wrong");
+                    System.out.println("something went wrong idk tun g tung");
                     return;
                 }
                 ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
@@ -147,6 +147,12 @@ public class SqlGenerator {
             String[] nameStuff = name.split(" [|] ",2);
             CourseList.add(new Course(x,nameStuff[0],Integer.parseInt(nameStuff[1])));
             x++;
+        }
+    }
+
+    public void RosterInitializer() throws FileNotFoundException {
+        for (Student student : StudentList) {
+            RosterList.add(new Roster(student));
         }
     }
 }
