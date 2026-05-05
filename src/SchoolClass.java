@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class SchoolClass {
     private String name;
-    private ArrayList<Student> Students;
+    public ArrayList<Student> Students;
     private ArrayList<Assignment> Assignments;
     private int ID;
     private Teacher teacher;
@@ -16,6 +16,7 @@ public class SchoolClass {
         this.room = room;
         this.period = period;
         this.CourseParent = CourseParent;
+        Students = new ArrayList<>();
     }
 
     public void addStudents (Student a){

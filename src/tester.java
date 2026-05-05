@@ -1,15 +1,14 @@
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class tester {
     public static void main(String[] args) throws FileNotFoundException {
         SqlGenerator generator = new SqlGenerator();
-        generator.RoomInitalizer();
-        generator.DepartmentsAndTeacherInitalizer();
-        generator.CourseInitalizer();
-        generator.ClassesInitializer();
-        generator.StudentInitalizer();
-        generator.RosterInitializer();
+        generator.roomInitalizer();
+        generator.departmentsAndTeacherInitalizer();
+        generator.courseInitalizer();
+        generator.classesInitializer();
+        generator.studentInitalizer();
+        generator.rosterInitializer();
         System.out.println(generator.RosterList);
 
 
