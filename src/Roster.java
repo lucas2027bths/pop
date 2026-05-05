@@ -41,7 +41,15 @@ public class Roster {
 
     @Override
     public String toString() {
-        return "INSERT INTO Rosters(";
+        return "INSERT INTO Rosters(period1_ClassID int,\period2_ClassID int,\n" +
+                "        period3_ClassID int,\n" +
+                "        period4_ClassID int,\n" +
+                "        period5_ClassID int,\n" +
+                "        period6_ClassID int,\n" +
+                "        period7_ClassID int,\n" +
+                "        period8_ClassID int,\n" +
+                "        period9_ClassID int,\n" +
+                "        period10_ClassID int,\n";
     }
 }
 
