@@ -114,7 +114,7 @@ public class SqlGenerator {
                     for (Assignment each : CurrClass.getAssignments()){
                         int AssignmentID = CurrClass.getID() * 15 + k - 15;
                         System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                                + (int)(Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ")");
+                                + (int)(Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ");");
                     }
                 }
             }
