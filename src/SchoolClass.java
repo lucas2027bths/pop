@@ -11,7 +11,7 @@ public class SchoolClass {
     private Course CourseParent;
 
     public SchoolClass(int ID, Teacher teacher, Room room, int period, Course CourseParent){
-        this.name = name;
+        this.name = CourseParent.getName() + period;
         this.ID = ID;
         this.teacher = teacher;
         this.room = room;
