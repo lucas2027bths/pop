@@ -171,7 +171,7 @@ public class SqlGenerator {
 
     public void courseInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner (new File("src/courses"));
-        int x = 0;
+        int x = 1;
         while(scan.hasNextLine()){
             String name = scan.nextLine();
             String[] nameStuff = name.split(" [|] ",2);
