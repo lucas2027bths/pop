@@ -10,15 +10,30 @@ public class tester {
         generator.studentInitalizer();
         generator.rosterInitializer();
 
-        System.out.println(generator.RoomList);
+        for (Room each : generator.RoomList){
+            System.out.println(each);
+        }
         System.out.println(CourseTypes.insertTypes());
-        System.out.println(generator.DepartmentList);
-        System.out.println(generator.CourseList);
-        System.out.println(generator.TeacherList);
-        System.out.println(generator.ClassList);
-        System.out.println(generator.RosterList);
-        System.out.println(generator.StudentList);
-//        generator.GradeInitializer();
+        System.out.println(AssignmentType.getType());
+        for (Department each : generator.DepartmentList){
+            System.out.println(each);
+        }
+        for (Course each : generator.CourseList){
+            System.out.println(each);
+        }
+        for (Teacher each : generator.TeacherList){
+            System.out.println(each);
+        }
+        for (SchoolClass each : generator.ClassList){
+            System.out.println(each);
+        }
+        for (Roster each : generator.RosterList){
+            System.out.println(each);
+        }
+        for (Student each : generator.StudentList){
+            System.out.println(each);
+        }
+        generator.GradeInitializer();
 
 
 //        generator.GradeInitializer();

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -33,7 +34,6 @@ public class SqlGenerator {
                 else {
                     realWing = "W";
                 }
-
 
 
                 for (int room = 1; room <= 20; room++){
