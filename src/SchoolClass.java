@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class SchoolClass {
     private String name;
     public ArrayList<Student> Students;
-    private ArrayList<Assignment> Assignments;
+    private ArrayList<Assignment> ClassAssignment = new ArrayList<>();
     private int ID;
     private Teacher teacher;
     private Room room;
@@ -18,6 +18,7 @@ public class SchoolClass {
         this.period = period;
         this.CourseParent = CourseParent;
         Students = new ArrayList<>();
+
     }
 
     public void addStudents (Student a){
@@ -27,19 +28,20 @@ public class SchoolClass {
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
-            Assignments.add(new Assignment(0,i,AssignmentName));
+            ClassAssignment.add(new Assignment(0,i,AssignmentName));
+
         }
         for (int i = 12; i < 15; i++) {
             String AssignmentName = this.name + "work" + i;
-            Assignments.add(new Assignment(1,i,AssignmentName));
+            ClassAssignment.add(new Assignment(1,i,AssignmentName));
         }
-        for (int i = 0; i < Assignments.size(); i++) {
+        for (int i = 0; i < ClassAssignment.size(); i++) {
             System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
-                    " (" + Assignments.get(i).getName() + "," +Assignments.get(i).getType() +"," + ID + ")\"");
+                    " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
         }
     }
     public ArrayList<Assignment> getAssignments(){
-        return Assignments;
+        return ClassAssignment;
     }
 
     public int getPeriod() {
