@@ -163,9 +163,6 @@ public class SqlGenerator {
             }
 
         }
-        for(SchoolClass each : ClassList){
-            System.out.println(each);
-        }
 
 
     }
