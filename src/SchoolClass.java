@@ -36,7 +36,7 @@ public class SchoolClass {
             ClassAssignment.add(new Assignment(1,i,AssignmentName));
         }
         for (int i = 0; i < ClassAssignment.size(); i++) {
-            System.out.println("echo \"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
+            System.out.println("INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
                     " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
         }
     }

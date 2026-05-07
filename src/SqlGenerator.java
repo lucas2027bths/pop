@@ -113,8 +113,8 @@ public class SqlGenerator {
                     SchoolClass CurrClass = CurrClassList.get(j);
                     for (Assignment each : CurrClass.getAssignments()){
                         int AssignmentID = CurrClass.getID() * 15 + k;
-                        System.out.println("echo \" INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                                + (int)(Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ")\"");
+                        System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
+                                + (int)(Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ")");
                     }
                 }
             }
@@ -185,8 +185,10 @@ public class SqlGenerator {
 
     public void rosterInitializer  () throws FileNotFoundException {
         int maxStudents = StudentList.size() / ClassList.size();
+        int ID = 0;
         for (Student student : StudentList) {
-            RosterList.add(new Roster(student,ClassList));
+            RosterList.add(new Roster(student,ClassList,ID));
+            ID++;
         }
     }
 }

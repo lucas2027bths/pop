@@ -30,6 +30,6 @@ public class Student {
     }
 
     public String toString(){
-        return "INSERT INTO Student(id, roster, first, last) VALUES ("+ id+ "," + roster +",'" + first + " " + last +"');";
+        return "INSERT INTO Student(id, roster, first, last) VALUES ("+ id+ "," + roster.getID() +",'" + first + " " + last +"');";
     }
 }

@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 
 public class Roster {
-    private static int ID;
+    private int ID;
     private ArrayList<SchoolClass> Classes;
     private Student student;
 
-    public Roster(Student student, ArrayList<SchoolClass> FullClassList) {
+
+    public Roster(Student student, ArrayList<SchoolClass> FullClassList,int ID) {
+        this.ID = ID;
         Classes = new ArrayList<>();
         this.student = student;
         for (int i = 1; i <= 10; i++) {
@@ -42,7 +44,9 @@ public class Roster {
     public ArrayList<SchoolClass> getClasses(){
         return Classes;
     }
-
+    public int getID() {
+        return ID;
+    }
     @Override
     public String toString() {
         return "INSERT INTO Rosters(period1_ClassID int,period2_ClassID int,\n" +
