@@ -52,7 +52,7 @@ public class SchoolClass {
     }
 
     public String toString (){
-        return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ")";
+        return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ");";
     }
 
 //    public void giveGrade(){
