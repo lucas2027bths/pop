@@ -109,10 +109,10 @@ public class SqlGenerator {
             Roster CurrRosterObj=CurrStudent.getRoster();
             ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
             for (int j = 0; j < 10; j++) {
-                for (int k = 0; k < 15; k++) {
+                for (int k = 1; k < 16; k++) {
                     SchoolClass CurrClass = CurrClassList.get(j);
                     for (Assignment each : CurrClass.getAssignments()){
-                        int AssignmentID = CurrClass.getID() * 15 + k;
+                        int AssignmentID = CurrClass.getID() * 15 + k - 15;
                         System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
                                 + (int)(Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ")");
                     }

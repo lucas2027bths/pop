@@ -28,17 +28,17 @@ public class SchoolClass {
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
-            ClassAssignment.add(new Assignment(0,i,AssignmentName));
+            ClassAssignment.add(new Assignment(1,i,AssignmentName));
 
         }
         for (int i = 12; i < 15; i++) {
             String AssignmentName = this.name + "work" + i;
-            ClassAssignment.add(new Assignment(1,i,AssignmentName));
+            ClassAssignment.add(new Assignment(2,i,AssignmentName));
         }
-        for (int i = 0; i < ClassAssignment.size(); i++) {
-            System.out.println("INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
-                    " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
-        }
+//        for (int i = 0; i < ClassAssignment.size(); i++) {
+//            System.out.println("INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
+//                    " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
+//        }
     }
     public ArrayList<Assignment> getAssignments(){
         return ClassAssignment;
