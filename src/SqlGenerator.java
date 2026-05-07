@@ -14,7 +14,7 @@ public class SqlGenerator {
     public ArrayList<Roster> RosterList = new ArrayList<>();
 
     public void roomInitalizer(){
-        int id = 0;
+        int id = 1;
         for (int floor = 0; floor <= 8;floor++){
 
             for (int wing = 0; wing < 4; wing++){
@@ -69,7 +69,7 @@ public class SqlGenerator {
                 "Visual & Performing Arts",
                 "World Languages & ENL"
         };
-        int id = 0;
+        int id = 1;
 
         for (int x = 0; x < depts.length; x++){
             String dept = depts[x];
@@ -104,7 +104,7 @@ public class SqlGenerator {
     }
 
     public void GradeInitializer(){
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 1; i < 5001; i++) {
             Student CurrStudent = StudentList.get(i);
             Roster CurrRosterObj=CurrStudent.getRoster();
             ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
@@ -128,7 +128,7 @@ public class SqlGenerator {
         int room = 0;
         int teach = 0;
         int period = 1;
-        int id = 0;
+        int id = 1;
         for (int x = 0; x < CourseList.size(); x++){
 
             int randomNum = ran.nextInt(1,5);
@@ -185,7 +185,7 @@ public class SqlGenerator {
 
     public void rosterInitializer  () throws FileNotFoundException {
         int maxStudents = StudentList.size() / ClassList.size();
-        int ID = 0;
+        int ID = 1;
         for (Student student : StudentList) {
             RosterList.add(new Roster(student,ClassList,ID));
             ID++;

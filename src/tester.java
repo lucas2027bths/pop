@@ -11,13 +11,14 @@ public class tester {
         generator.rosterInitializer();
 
         System.out.println(generator.RoomList);
+        System.out.println(CourseTypes.insertTypes());
         System.out.println(generator.DepartmentList);
         System.out.println(generator.CourseList);
         System.out.println(generator.TeacherList);
         System.out.println(generator.ClassList);
         System.out.println(generator.RosterList);
         System.out.println(generator.StudentList);
-        generator.GradeInitializer();
+//        generator.GradeInitializer();
 
 
 //        generator.GradeInitializer();
