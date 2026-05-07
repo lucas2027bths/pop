@@ -104,7 +104,7 @@ public class SqlGenerator {
     }
 
     public void GradeInitializer(){
-        for (int i = 1; i < 5001; i++) {
+        for (int i = 0; i < 5000; i++) {
             Student CurrStudent = StudentList.get(i);
             Roster CurrRosterObj=CurrStudent.getRoster();
             ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
@@ -114,7 +114,7 @@ public class SqlGenerator {
                     for (Assignment each : CurrClass.getAssignments()){
                         int AssignmentID = CurrClass.getID() * 15 + k - 15;
                         System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                                + (int)(Math.random()* 25 + 75) + ","  + i + ","  + AssignmentID + ");");
+                                + (int)(Math.random()* 25 + 75) + ","  + i+1 + ","  + AssignmentID + ");");
                     }
                 }
             }
@@ -157,7 +157,7 @@ public class SqlGenerator {
                     return;
                 }
                 ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
-                ClassList.getLast().makeAssignments();
+                ClassList.get(ClassList.size()-1).makeAssignments();
                 id++;
                 period++;
             }
