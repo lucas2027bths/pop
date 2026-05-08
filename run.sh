@@ -1,3 +1,3 @@
 cd src
-javac *.javac
+javac *.java
 java tester < ../pop.sql
