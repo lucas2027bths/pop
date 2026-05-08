@@ -74,10 +74,10 @@ public class SqlGenerator {
 
         for (int x = 0; x < depts.length; x++){
             String dept = depts[x];
-            DepartmentList.add(new Department(x,dept));
+            DepartmentList.add(new Department(x+1,dept));
             while(scan.hasNextLine()){
                 String name = scan.nextLine();
-                if (x+1 < depts.length && name.equals(depts[x+1])){
+                if (name.equals(depts[x])){
                     break;
                 }
                 String[] firstLast = name.split(" ",2);
