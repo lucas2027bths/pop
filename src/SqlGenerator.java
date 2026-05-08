@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class SqlGenerator {
 
@@ -136,44 +133,53 @@ public class SqlGenerator {
         int teach = 0;
         int period = 1;
         int id = 1;
-        for (int x = 0; x < CourseList.size(); x++){
 
-            int randomNum = ran.nextInt(1,5);
-            for (int y = 0; y < randomNum; y++){
+        Collections.shuffle(CourseList);  //randomize
 
-                if (period > 10){
-                    period = 1;
-                    room++;
-                }
 
-                Room currentRoom = RoomList.get(room);
-                currentRoom.booked[period-1] = true;
-                Teacher currentTeacher = null;
+        for (int x = 0; x < CourseList.size(); x++){ //go through all courses and create classes for them
 
-                for (int j = 0; j < TeacherList.size(); j++){
-                    Teacher teacher = TeacherList.get(j);
-                    if (!teacher.booked[period - 1]){
-                        teacher.booked[period-1] = true;
-                        currentTeacher = teacher;
-                        break;
-                    }
-                }
-
-                if (currentTeacher == null){
-                    System.out.println("something went wrong");
-                    return;
-                }
-                ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
-                ClassList.get(ClassList.size()-1).makeAssignments();
-                id++;
-                period++;
-            }
+            createClassesOfCourse(ran,period,room,id,x);
 
         }
 
 
     }
 
+    private void createClassesOfCourse(Random ran, int period, int room,int id, int x){
+        int amountOfClassesPerCourse = ran.nextInt(1,5);
+
+        for (int y = 0; y < amountOfClassesPerCourse; y++){ //create from 1-5 classes per course
+
+            if (period > 10){ //reset back to period 1 if period 10 is reached
+                period = 1;
+                room++; //we're doing psuedo random and really just getting a random coures and then giving all rooms 10 periods of a class
+            }
+
+            Room currentRoom = RoomList.get(room); //get a room
+            currentRoom.booked[period-1] = true; // -1 because index starts at 0
+            Teacher currentTeacher = null;
+
+            for (int j = 0; j < TeacherList.size(); j++){ //not truly random but because the courselist is shuffled it's fine
+                Teacher teacher = TeacherList.get(j); //very inefficient but just go through all teachers and try to find one that's not booked on that period
+                if (!teacher.booked[period - 1]){
+                    teacher.booked[period-1] = true;
+                    currentTeacher = teacher;
+                    break;
+                }
+            }
+
+            if (currentTeacher == null){ //if a teacher wasn't selected return as something went wrong
+                System.out.println("something went wrong");
+                return;
+            }
+
+            ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
+            ClassList.get(ClassList.size()-1).makeAssignments();
+            id++;
+            period++;
+        }
+    }
 
 
     public void courseInitalizer() throws FileNotFoundException {
