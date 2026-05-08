@@ -13,6 +13,7 @@ public class SqlGenerator {
     public ArrayList<Student> StudentList = new ArrayList<>();
     public ArrayList<SchoolClass> ClassList = new ArrayList<>();
     public ArrayList<Roster> RosterList = new ArrayList<>();
+    static String location = "src/";
 
     public void roomInitalizer(){
         int id = 1;
@@ -56,7 +57,7 @@ public class SqlGenerator {
 
 
     public void departmentsAndTeacherInitalizer() throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("src/teachers"));
+        Scanner scan = new Scanner(new File(location+"teachers"));
         String[] depts = {"Biological Sciences",
                 "Chemistry",
                 "Computer Science",
@@ -94,7 +95,7 @@ public class SqlGenerator {
 
 
     public void studentInitalizer() throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("src/students"));
+        Scanner scan = new Scanner(new File(location+"students"));
         int count = 0;
         while(scan.hasNextLine()){
             String[] name = scan.nextLine().split(" ");
@@ -170,7 +171,7 @@ public class SqlGenerator {
 
 
     public void courseInitalizer() throws FileNotFoundException {
-        Scanner scan = new Scanner (new File("src/courses"));
+        Scanner scan = new Scanner (new File(location+"courses"));
         int x = 1;
         while(scan.hasNextLine()){
             String name = scan.nextLine();
