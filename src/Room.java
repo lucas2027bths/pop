@@ -12,7 +12,7 @@ public class Room {
 
     @Override
     public String toString(){
-        return "INSERT INTO Departments VALUES ("+ID+",'" + location +"');";
+        return "INSERT INTO Rooms VALUES ("+ID+",'" + location +"');";
     }
 
 }
