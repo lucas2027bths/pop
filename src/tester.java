@@ -8,8 +8,7 @@ public class tester {
             String username = System.getProperty("user.name");
            SqlGenerator.location = "/home/" + username + "/pop/src/";
             System.out.println("USE " + username+"_db;");
-            System.out.println("DROP Tables script:\n" +
-                    "\n" +
+            System.out.println(
                     "DROP TABLE Grades;\n" +
                     "\n" +
                     "DROP TABLE Assignments;\n" +
