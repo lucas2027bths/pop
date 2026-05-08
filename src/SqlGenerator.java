@@ -6,6 +6,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class SqlGenerator {
+
+
+    //Lists
     public ArrayList<Department> DepartmentList = new ArrayList<>();
     public ArrayList<Teacher> TeacherList = new ArrayList<>();
     public ArrayList<Room> RoomList = new ArrayList<>();
@@ -58,7 +61,7 @@ public class SqlGenerator {
 
     public void departmentsAndTeacherInitalizer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File(location+"teachers"));
-        String[] depts = {"Biological Sciences",
+        String[] departments = {"Biological Sciences",
                 "Chemistry",
                 "Computer Science",
                 "English",
@@ -72,18 +75,21 @@ public class SqlGenerator {
         };
         int id = 1;
 
-        for (int x = 0; x < depts.length; x++){
-            String dept = depts[x];
-            DepartmentList.add(new Department(x+1,dept));
-            while(scan.hasNextLine()){
+        for (int currentDepartment = 0; currentDepartment < departments.length; currentDepartment++){
+            String departmentName = departments[currentDepartment];
+            DepartmentList.add(new Department(currentDepartment+1,departmentName));
+
+            while (scan.hasNextLine()) {
                 String name = scan.nextLine();
-                if (x + 1 < depts.length && name.equals(depts[x])){
+                if (name.isEmpty()){
+                    continue;
+                }
+                if (currentDepartment + 1 < departments.length && name.equals(departments[currentDepartment+1])) {
                     break;
                 }
-                String[] firstLast = name.split(" ",2);
-                TeacherList.add(new Teacher(id,firstLast[0],firstLast[1],x));
+                String[] firstLast = name.split(" ", 2);
+                TeacherList.add(new Teacher(id, firstLast[0], firstLast[1], currentDepartment+1));
                 id++;
-
             }
 
 
