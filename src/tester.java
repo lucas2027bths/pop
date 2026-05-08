@@ -8,28 +8,28 @@ public class tester {
             String username = System.getProperty("user.name");
            SqlGenerator.location = "/home/" + username + "/pop/src/";
             System.out.println("USE " + username+"_db;");
-            System.out.println(
-                    "DROP TABLE Grades;\n" +
-                    "\n" +
-                    "DROP TABLE Assignments;\n" +
-                    "\n" +
-                    "DROP TABLE Students;\n" +
-                    "\n" +
-                    "DROP TABLE Rosters;\n" +
-                    "\n" +
-                    "DROP TABLE Classes;\n" +
-                    "\n" +
-                    "DROP TABLE Teachers;\n" +
-                    "\n" +
-                    "DROP TABLE Courses;\n" +
-                    "\n" +
-                    "DROP TABLE Departments;\n" +
-                    "\n" +
-                    "DROP TABLE AssignmentTypes;\n" +
-                    "\n" +
-                    "DROP TABLE CourseTypes;\n" +
-                    "\n" +
-                    "DROP TABLE Rooms;\n");
+//            System.out.println(
+//                    "DROP TABLE Grades;\n" +
+//                    "\n" +
+//                    "DROP TABLE Assignments;\n" +
+//                    "\n" +
+//                    "DROP TABLE Students;\n" +
+//                    "\n" +
+//                    "DROP TABLE Rosters;\n" +
+//                    "\n" +
+//                    "DROP TABLE Classes;\n" +
+//                    "\n" +
+//                    "DROP TABLE Teachers;\n" +
+//                    "\n" +
+//                    "DROP TABLE Courses;\n" +
+//                    "\n" +
+//                    "DROP TABLE Departments;\n" +
+//                    "\n" +
+//                    "DROP TABLE AssignmentTypes;\n" +
+//                    "\n" +
+//                    "DROP TABLE CourseTypes;\n" +
+//                    "\n" +
+//                    "DROP TABLE Rooms;\n");
             System.out.println("CREATE TABLE Rooms (\n" +
                     "        roomID int PRIMARY KEY AUTO_INCREMENT,\n" +
                     "        location varchar(5)\n" +
