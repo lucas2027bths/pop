@@ -7,6 +7,7 @@ public class tester {
         if (osName.equals("Linux")){
             String username = System.getProperty("user.name");
            SqlGenerator.location = "/home/" + username + "/pop/src/";
+            System.out.println("USE " + username+"_db;");
         }
         SqlGenerator generator = new SqlGenerator();
         generator.roomInitalizer();
