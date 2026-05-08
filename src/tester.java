@@ -131,7 +131,7 @@ public class tester {
                     "        FOREIGN KEY (ClassID)\n" +
                     "        REFERENCES Classes(classID),\n" +
                     "        CONSTRAINT fk_assignment_typeID\n" +
-                    "        FOREIGN KEY (assignment_typeIqD)\n" +
+                    "        FOREIGN KEY (assignment_typeID)\n" +
                     "        REFERENCES AssignmentTypes(assignment_typeID)\n" +
                     ");\n" +
                     "\n" +
