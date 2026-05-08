@@ -1,9 +1,7 @@
 public class CourseTypes {
     public static String insertTypes (){
-        return """
-                INSERT INTO CourseTypes Values(1,'Regents');
-                INSERT INTO CourseTypes Values(2,'AP');
-                INSERT INTO CourseTypes Values(3,'Elective');
-                """;
+        return "INSERT INTO CourseTypes VALUES(1,'Regents');\n" +
+                "INSERT INTO CourseTypes VALUES(2,'AP');\n" +
+                "INSERT INTO CourseTypes VALUES(3,'Elective');";
     }
 }
