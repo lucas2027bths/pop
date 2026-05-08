@@ -26,15 +26,14 @@ public class Main {
     }
     private static void printInserts(SqlGenerator generator) {
         generator.RoomList.forEach(System.out::println); // for each alot cleaner than 1 billion for loops
+        System.out.println(CourseTypes.insertTypes());
+        System.out.println(AssignmentType.getType());
         generator.DepartmentList.forEach(System.out::println);
         generator.CourseList.forEach(System.out::println);
         generator.TeacherList.forEach(System.out::println);
         generator.ClassList.forEach(System.out::println);
         generator.RosterList.forEach(System.out::println);
         generator.StudentList.forEach(System.out::println);
-
-        System.out.println(CourseTypes.insertTypes());
-        System.out.println(AssignmentType.getType());
     }
 
     private static String createSchema() {
