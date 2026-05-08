@@ -77,7 +77,7 @@ public class SqlGenerator {
             DepartmentList.add(new Department(x+1,dept));
             while(scan.hasNextLine()){
                 String name = scan.nextLine();
-                if (name.equals(depts[x])){
+                if (x + 1 < depts.length && name.equals(depts[x])){
                     break;
                 }
                 String[] firstLast = name.split(" ",2);
