@@ -30,7 +30,7 @@ public class tester {
                     "DROP TABLE CourseTypes;\n" +
                     "\n" +
                     "DROP TABLE Rooms;\n");
-            System.out.println("\"CREATE TABLE Rooms (\n" +
+            System.out.println("CREATE TABLE Rooms (\n" +
                     "        roomID int PRIMARY KEY AUTO_INCREMENT,\n" +
                     "        location varchar(5)\n" +
                     ");\n" +
