@@ -135,7 +135,7 @@ public class SqlGenerator {
         int id = 1;
 
         Collections.shuffle(CourseList);  //randomize
-
+        Collections.shuffle(TeacherList);
 
         for (int x = 0; x < CourseList.size(); x++){ //go through all courses and create classes for them
 
@@ -160,7 +160,7 @@ public class SqlGenerator {
             currentRoom.booked[period-1] = true; // -1 because index starts at 0
             Teacher currentTeacher = null;
 
-            for (int j = 0; j < TeacherList.size(); j++){ //not truly random but because the courselist is shuffled it's fine
+            for (int j = 0; j < TeacherList.size(); j++){
                 Teacher teacher = TeacherList.get(j); //very inefficient but just go through all teachers and try to find one that's not booked on that period
                 if (!teacher.booked[period - 1]){
                     teacher.booked[period-1] = true;
