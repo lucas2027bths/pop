@@ -15,7 +15,7 @@ public class SqlGenerator {
     public ArrayList<Roster> RosterList = new ArrayList<>();
     static String location = "src/";
 
-    public void roomInitalizer(){
+    public void roomInitializer(){
         int id = 1;
         for (int floor = 0; floor <= 8;floor++){ //iterates through all floors and wings in order to create all the rooms
 
@@ -37,7 +37,7 @@ public class SqlGenerator {
                 }
 
 
-                for (int room = 1; room <= 20; room++){
+                for (int room = 1; room <= 20; room++){ // Creates the rooms for each WING
                     String location;
                     if (floor == 0){
                         location = ("B" + realWing + room);  //make it B instead of 0
@@ -56,7 +56,7 @@ public class SqlGenerator {
     }
 
 
-    public void departmentsAndTeacherInitalizer() throws FileNotFoundException {
+    public void departmentsAndTeacherInitializer() throws FileNotFoundException {
         Scanner scan = new Scanner(new File(location+"teachers"));
         String[] departments = {"Biological Sciences",
                 "Chemistry",
@@ -98,7 +98,7 @@ public class SqlGenerator {
 
 
 
-    public void studentInitalizer() throws FileNotFoundException {
+    public void studentInitializer() throws FileNotFoundException { // adds the students from the students text file to studentList
         Scanner scan = new Scanner(new File(location+"students"));
         int count = 0;
         while(scan.hasNextLine()){
@@ -113,13 +113,13 @@ public class SqlGenerator {
             Student CurrStudent = StudentList.get(i);
             Roster CurrRosterObj=CurrStudent.getRoster();
             ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
-            for (int j = 0; j < 10; j++) {
-                for (int k = 1; k < 16; k++) {
+            for (int j = 0; j < 10; j++) { // iterates through student's each given class in roster
+                for (int k = 1; k < 16; k++) { // iterates through each assignments in the class
                     SchoolClass CurrClass = CurrClassList.get(j);
                     for (Assignment each : CurrClass.getAssignments()){
                         int AssignmentID = CurrClass.getID() * 15 + k - 15;
                         System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                                + (int)(Math.random()* 25 + 75) + ","  + i+1 + ","  + AssignmentID + ");");
+                                + (int)(Math.random()* 25 + 75) + ","  + i+1 + ","  + AssignmentID + ");"); // assigns random grade from 75-100 to assignment and makes insert statement
                     }
                 }
             }
@@ -180,7 +180,7 @@ public class SqlGenerator {
 
 
 
-    public void courseInitalizer() throws FileNotFoundException {
+    public void courseInitializer() throws FileNotFoundException { // creates courses from courses text file and adds into courseList
         Scanner scan = new Scanner (new File(location+"courses"));
         int x = 1;
         while(scan.hasNextLine()){
@@ -195,7 +195,7 @@ public class SqlGenerator {
         int maxStudents = StudentList.size() / ClassList.size();
         int ID = 1;
         for (Student student : StudentList) {
-            RosterList.add(new Roster(student,ClassList,ID));
+            RosterList.add(new Roster(student,ClassList,ID)); // make a new roster for each student
             ID++;
         }
     }

@@ -4,18 +4,18 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         getOperatingAndDoStuff();
-        //initalize all the arrayLists / data
+        //initialize all the arrayLists / data
         SqlGenerator generator = new SqlGenerator();
-        generator.roomInitalizer();
-        generator.departmentsAndTeacherInitalizer();
-        generator.courseInitalizer();
+        generator.roomInitializer();
+        generator.departmentsAndTeacherInitializer();
+        generator.courseInitializer();
         generator.classesInitializer();
-        generator.studentInitalizer();
+        generator.studentInitializer();
         generator.rosterInitializer();
         printInserts(generator);
         generator.GradeInitializer();
     }
-    private static void getOperatingAndDoStuff() {
+    private static void getOperatingAndDoStuff() { // adjusts for operating system and username
         String osName = System.getProperty("os.name");
         if (osName.equals("Linux")) {
             String username = System.getProperty("user.name");
