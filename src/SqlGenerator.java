@@ -17,7 +17,7 @@ public class SqlGenerator {
 
     public void roomInitalizer(){
         int id = 1;
-        for (int floor = 0; floor <= 8;floor++){
+        for (int floor = 0; floor <= 8;floor++){ //iterates through all floors and wings in order to create all the rooms
 
             for (int wing = 0; wing < 4; wing++){
                 String realWing;
@@ -40,7 +40,7 @@ public class SqlGenerator {
                 for (int room = 1; room <= 20; room++){
                     String location;
                     if (floor == 0){
-                        location = ("B" + realWing + room);
+                        location = ("B" + realWing + room);  //make it B instead of 0
                     }else{
                         location = (floor + realWing + room );
                     }
@@ -72,16 +72,17 @@ public class SqlGenerator {
         };
         int id = 1;
 
-        for (int currentDepartment = 0; currentDepartment < departments.length; currentDepartment++){
+        for (int currentDepartment = 0; currentDepartment < departments.length; currentDepartment++){ //iterates through al departments
             String departmentName = departments[currentDepartment];
             DepartmentList.add(new Department(currentDepartment+1,departmentName));
 
             while (scan.hasNextLine()) {
                 String name = scan.nextLine();
-                if (name.isEmpty()){
+                if (name.isEmpty()){ //if line is empty than continue
                     continue;
                 }
-                if (currentDepartment + 1 < departments.length && name.equals(departments[currentDepartment+1])) {
+
+                if (currentDepartment + 1 < departments.length && name.equals(departments[currentDepartment+1])) {  //if we reach the next department's name then break so you add teachers to the next department
                     break;
                 }
                 String[] firstLast = name.split(" ", 2);
@@ -139,47 +140,44 @@ public class SqlGenerator {
 
         for (int x = 0; x < CourseList.size(); x++){ //go through all courses and create classes for them
 
-            createClassesOfCourse(ran,period,room,id,x);
+            int amountOfClassesPerCourse = ran.nextInt(1,5);
 
-        }
+            for (int y = 0; y < amountOfClassesPerCourse; y++){ //create from 1-5 classes per course
 
-
-    }
-
-    private void createClassesOfCourse(Random ran, int period, int room,int id, int x){
-        int amountOfClassesPerCourse = ran.nextInt(1,5);
-
-        for (int y = 0; y < amountOfClassesPerCourse; y++){ //create from 1-5 classes per course
-
-            if (period > 10){ //reset back to period 1 if period 10 is reached
-                period = 1;
-                room++; //we're doing psuedo random and really just getting a random coures and then giving all rooms 10 periods of a class
-            }
-
-            Room currentRoom = RoomList.get(room); //get a room
-            currentRoom.booked[period-1] = true; // -1 because index starts at 0
-            Teacher currentTeacher = null;
-
-            for (int j = 0; j < TeacherList.size(); j++){
-                Teacher teacher = TeacherList.get(j); //very inefficient but just go through all teachers and try to find one that's not booked on that period
-                if (!teacher.booked[period - 1]){
-                    teacher.booked[period-1] = true;
-                    currentTeacher = teacher;
-                    break;
+                if (period > 10){ //reset back to period 1 if period 10 is reached
+                    period = 1;
+                    room++; //we're doing psuedo random and really just getting a random coures and then giving all rooms 10 periods of a class
                 }
+
+                Room currentRoom = RoomList.get(room); //get a room
+                currentRoom.booked[period-1] = true; // -1 because index starts at 0
+                Teacher currentTeacher = null;
+
+                for (int j = 0; j < TeacherList.size(); j++){
+                    Teacher teacher = TeacherList.get(j); //very inefficient but just go through all teachers and try to find one that's not booked on that period
+                    if (!teacher.booked[period - 1]){
+                        teacher.booked[period-1] = true;
+                        currentTeacher = teacher;
+                        break;
+                    }
+                }
+
+                if (currentTeacher == null){ //if a teacher wasn't selected return as something went wrong
+                    System.out.println("something went wrong");
+                    return;
+                }
+
+                ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
+                ClassList.get(ClassList.size()-1).makeAssignments();
+                id++;
+                period++;
             }
 
-            if (currentTeacher == null){ //if a teacher wasn't selected return as something went wrong
-                System.out.println("something went wrong");
-                return;
-            }
-
-            ClassList.add(new SchoolClass(id,currentTeacher,currentRoom,period,CourseList.get(x)));
-            ClassList.get(ClassList.size()-1).makeAssignments();
-            id++;
-            period++;
         }
+
+
     }
+
 
 
     public void courseInitalizer() throws FileNotFoundException {

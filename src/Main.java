@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         getOperatingAndDoStuff();
-
+        //initalize all the arrayLists / data
         SqlGenerator generator = new SqlGenerator();
         generator.roomInitalizer();
         generator.departmentsAndTeacherInitalizer();
@@ -19,9 +19,9 @@ public class Main {
         String osName = System.getProperty("os.name");
         if (osName.equals("Linux")) {
             String username = System.getProperty("user.name");
-            SqlGenerator.location = "/home/" + username + "/pop/src/";
+            SqlGenerator.location = "/home/" + username + "/pop/src/"; //set the location for files differently if on unix server
             System.out.println("USE " + username + "_db;");
-            System.out.println(createSchema());
+            System.out.println(createSchema()); //add the create schema if being ran on the server
         }
     }
     private static void printInserts(SqlGenerator generator) {
