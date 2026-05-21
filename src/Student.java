@@ -1,3 +1,7 @@
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Student {
     private String first;
     private String last;
@@ -31,5 +35,18 @@ public class Student {
 
     public String toString(){
         return "INSERT INTO Student(id, roster, first, last) VALUES ("+ id+ "," + roster.getID() +",'" + first + " " + last +"');";
+    }
+
+
+    public static ArrayList<Student> createStudents(){
+        ArrayList<Student> studentList = new ArrayList<>();
+        Scanner scan = new Scanner(new File(location+"students"));
+        int count = 1;
+        while(scan.hasNextLine()){
+            String[] name = scan.nextLine().split(" ");
+            studentList.add(new Student(name[0],name[1],count));
+            count++;
+        }
+        return studentList;
     }
 }

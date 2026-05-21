@@ -24,4 +24,10 @@ public class Assignment {
        return "\"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
                 " (" + "'" + name + "'," + type +"," + id + ")\"";
     }
+
+    public static String insertTypes (){
+        return "INSERT INTO AssignmentTypes Values(1,'Major');INSERT INTO AssignmentTypes Values(2,'Minor');";
+    }
+
+
 }

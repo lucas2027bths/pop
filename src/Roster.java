@@ -49,15 +49,15 @@ public class Roster {
     }
     @Override
     public String toString() {
-        return "INSERT INTO Rosters(period1_ClassID ,period2_ClassID ,\n" +
-                "        period3_ClassID ,\n" +
-                "        period4_ClassID ,\n" +
-                "        period5_ClassID ,\n" +
-                "        period6_ClassID ,\n" +
-                "        period7_ClassID ,\n" +
-                "        period8_ClassID ,\n" +
-                "        period9_ClassID ,\n" +
-                "        period10_ClassID) \n" +
+        return "INSERT INTO Rosters(period1_ClassID ,period2_ClassID ," +
+                "        period3_ClassID ," +
+                "        period4_ClassID ," +
+                "        period5_ClassID ," +
+                "        period6_ClassID ," +
+                "        period7_ClassID ," +
+                "        period8_ClassID ," +
+                "        period9_ClassID ," +
+                "        period10_ClassID) " +
                 " VALUES (" +Classes.get(0).getID() + "," +Classes.get(1).getID() + ","+Classes.get(2).getID() + ","+Classes.get(3).getID() + ","+Classes.get(4).getID() + ","+Classes.get(5).getID() + ","+Classes.get(6).getID() + ","+Classes.get(7).getID() + ","+Classes.get(8).getID() + ","+Classes.get(9).getID() +  ");";
     }
 }
