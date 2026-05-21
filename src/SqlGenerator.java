@@ -16,6 +16,7 @@ public class SqlGenerator {
     public ArrayList<Student> StudentList = new ArrayList<>();
     public ArrayList<SchoolClass> ClassList = new ArrayList<>();
     public ArrayList<Roster> RosterList = new ArrayList<>();
+    public static ArrayList<Assignment> AssignmentList = new ArrayList<>();
     static String location = "src/";
 
     public void roomInitalizer(){
@@ -111,18 +112,16 @@ public class SqlGenerator {
     }
 
     public void GradeInitializer(){
-        for (int i = 0; i < 5000; i++) {
-            Student CurrStudent = StudentList.get(i);
+        for (int i = 1; i < 5001; i++) {
+            Student CurrStudent = StudentList.get(i-1);
             Roster CurrRosterObj=CurrStudent.getRoster();
             ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
             for (int j = 0; j < 10; j++) {
-                for (int k = 1; k < 16; k++) {
+                for (int k = 0; k < 15; k++) {
                     SchoolClass CurrClass = CurrClassList.get(j);
-                    for (Assignment each : CurrClass.getAssignments()){
-                        int AssignmentID = CurrClass.getID() * 15 + k - 15;
+                    Assignment currAssignmentId =CurrClass.getAssignments().get(k);
                         System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                                + (int)(Math.random()* 25 + 75) + ","  + i+1 + ","  + AssignmentID + ");");
-                    }
+                                + (int)(Math.random()* 25 + 75) + ","  + i + ","  +  AssignmentList.indexOf(currAssignmentId) + 1 + ");");
                 }
             }
         }

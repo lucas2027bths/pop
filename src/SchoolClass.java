@@ -39,6 +39,7 @@ public class SchoolClass {
 //            System.out.println("INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
 //                    " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
 //        }
+        SqlGenerator.AssignmentList.addAll(ClassAssignment);
     }
     public ArrayList<Assignment> getAssignments(){
         return ClassAssignment;
