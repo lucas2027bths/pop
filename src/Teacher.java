@@ -3,7 +3,7 @@ public class Teacher {
     private String first;
     private String last;
     private int DEPTID;
-    public boolean[] booked;
+    public boolean[] booked; // boolean used to check if a teacher is book for a certain period
     public Teacher(int ID, String first, String last, int DEPTID){
         this.ID = ID;
         this.first = first;
