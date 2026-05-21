@@ -8,7 +8,7 @@ public class SchoolClass {
     private Teacher teacher;
     private Room room;
     private int period;
-    private Course CourseParent;
+    private Course CourseParent; // the course that this school class belongs to
 
     public SchoolClass(int ID, Teacher teacher, Room room, int period, Course CourseParent){
         this.name = CourseParent.getName() + period;
@@ -24,7 +24,7 @@ public class SchoolClass {
     public void addStudents (Student a){
        Students.add(a);
     }
-    public void makeAssignments (){
+    public void makeAssignments (){ // adds 12 minor assignments and 3 major assignments
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
@@ -39,6 +39,7 @@ public class SchoolClass {
 //            System.out.println("INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
 //                    " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
 //        }
+        SqlGenerator.AssignmentList.addAll(ClassAssignment);
     }
     public ArrayList<Assignment> getAssignments(){
         return ClassAssignment;

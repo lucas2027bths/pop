@@ -10,15 +10,15 @@ public class Roster {
         this.ID = ID;
         Classes = new ArrayList<>();
         this.student = student;
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) { // go through periods 1 to 10
             ArrayList<SchoolClass> ClassList = new ArrayList<>();
             for (SchoolClass schoolClass : FullClassList) {
                 if (schoolClass.getPeriod() == i) {
-                    ClassList.add(schoolClass);
+                    ClassList.add(schoolClass); // goes through the full list of classes from SQLGenerator and ONLY grabs the classes with same period as the current iteration
                 }
             }
             int rand = (int) ( Math.random() * (ClassList.size() - 1) );
-            Classes.add(ClassList.get(rand));
+            Classes.add(ClassList.get(rand)); // gets a random class and adds it to the student's roster list of classes
             ClassList.get(rand).addStudents(student);
             student.setRoster(this);
         }
