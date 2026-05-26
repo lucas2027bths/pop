@@ -111,7 +111,7 @@ public class SchoolClass {
                 for (int k = 0; k < 15; k++) {
                     SchoolClass CurrClass = CurrClassList.get(j);
                     Assignment currAssignmentId =CurrClass.getAssignments().get(k);
-                    System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
+                    System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID,gradeID) VALUES("
                             + (int)(Math.random()* 25 + 75) + ","  + i + ","  +  assignmentList.indexOf(currAssignmentId) + 1 + "," + gradeId + ");");
                     gradeId++;
                 }
