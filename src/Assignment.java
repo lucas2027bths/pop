@@ -4,11 +4,12 @@ public class Assignment {
     private int type;
     private String name;
     private int id;
-
-    public Assignment (int type, int id, String name){
+    private int classId;
+    public Assignment (int type, int id, String name, int classId){
         this.type = type;
         this.name = name;
         this.id = id;
+        this.classId = classId;
     }
     public int getId() {
         return id;
@@ -36,8 +37,8 @@ public class Assignment {
 
 
     public String toString(){
-       return "\"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
-                " (" + "'" + name + "'," + type +"," + id + ")\"";
+       return "\"INSERT INTO Assignment(assignmentID, assignmentName, assignment_typeID, classID) VALUES" +
+                " (" + id + ",'" + name +"'," + type + "," + classId + ")\";";
     }
 
     public static String insertTypes (){

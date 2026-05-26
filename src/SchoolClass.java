@@ -30,12 +30,12 @@ public class SchoolClass {
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
-            classAssignments.add(new Assignment(1,i,AssignmentName));
+            classAssignments.add(new Assignment(1,i,AssignmentName,this.id));
 
         }
         for (int i = 12; i < 15; i++) {
             String AssignmentName = this.name + "work" + i;
-            classAssignments.add(new Assignment(2,i,AssignmentName));
+            classAssignments.add(new Assignment(2,i,AssignmentName,this.id));
         }
     }
     public ArrayList<Assignment> getAssignments(){
