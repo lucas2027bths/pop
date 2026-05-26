@@ -34,27 +34,27 @@ public class Main {
 
         System.out.println(Department.header());
         printObjects(generator.getDepartmentList());
-//
-//        System.out.println(Course.header());
-//        printObjects(generator.getCourseList());
-//
-//        System.out.println(Teacher.header());
-//        printObjects(generator.getTeacherList());
-//
-//
-//        System.out.println(SchoolClass.header());
-//        printObjects(generator.getClassList());
-//
-//        System.out.println(Roster.header());
-//        printObjects(generator.getRosterList());
-//
-//        System.out.println(Student.header());
-//        printObjects(generator.getStudentList());
-//
-//        System.out.println(Assignment.header());
-//        printObjects(generator.getAssignmentList());
-//
-//       SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
+
+        System.out.println(Course.header());
+        printObjects(generator.getCourseList());
+
+        System.out.println(Teacher.header());
+        printObjects(generator.getTeacherList());
+
+
+        System.out.println(SchoolClass.header());
+        printObjects(generator.getClassList());
+
+        System.out.println(Roster.header());
+        printObjects(generator.getRosterList());
+
+        System.out.println(Student.header());
+        printObjects(generator.getStudentList());
+
+        System.out.println(Assignment.header());
+        printObjects(generator.getAssignmentList());
+
+       SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
     }
 
 
