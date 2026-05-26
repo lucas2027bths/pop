@@ -12,9 +12,15 @@ public class Room {
     }
 
 
+
+
+    public static String header(){
+        return "INSERT INTO Rooms VALUES";
+    }
+
     @Override
     public String toString(){
-        return "INSERT INTO Rooms VALUES ("+ id +",'" + location +"');";
+        return "(" + id +",'" + location +"'),";
     }
 
     public static ArrayList<Room> createRooms(){

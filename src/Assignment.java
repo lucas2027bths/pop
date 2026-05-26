@@ -35,10 +35,12 @@ public class Assignment {
 
     }
 
+    public static String header (){
+        return "INSERT INTO Assignments(assignmentID, assignmentName, assignment_typeID, classID) VALUES";
+    }
 
     public String toString(){
-       return "INSERT INTO Assignments(assignmentID, assignmentName, assignment_typeID, classID) VALUES" +
-                " (" + id + ",'" + name +"'," + type + "," + classId + ");";
+       return "(" + id + ",'" + name +"'," + type + "," + classId + "),";
     }
 
     public static String insertTypes (){

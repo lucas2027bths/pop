@@ -5,26 +5,30 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Teacher {
-    private int ID;
+    private int id;
     private String first;
     private String last;
     private int deptid;
     public boolean[] booked; // boolean used to check if a teacher is book for a certain period
     public Teacher(int ID, String first, String last, int DEPTID){
-        this.ID = ID;
+        this.id = ID;
         this.first = first;
         this.last = last;
         this.deptid = DEPTID;
         booked = new boolean[10];
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
+    }
+
+    public static String header(){
+        return "INSERT INTO Teachers (teacherID,first_name,last_name,departmentID) VALUES";
     }
 
     @Override
     public String toString(){
-        return "INSERT INTO Teachers (teacherID,first_name,last_name,departmentID) VALUES(" + ID + ",'" + first + "','" + last + "'," + deptid + ");";
+        return "(" + id + ",'" + first + "','" + last + "'," + deptid + "),";
     }
 
 

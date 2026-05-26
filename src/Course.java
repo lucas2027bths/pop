@@ -23,6 +23,10 @@ public class Course {
         return id;
     }
 
+    public static String header(){
+        return "INSERT INTO Courses VALUES";
+    }
+
     public static String insertTypes (){
         return "INSERT INTO CourseTypes VALUES(1,'Regents');" +
                 "INSERT INTO CourseTypes VALUES(2,'AP');" +
@@ -30,7 +34,7 @@ public class Course {
     }
     @Override
     public String toString(){
-        return "INSERT INTO Courses VALUES ("+ id +",'" + name +"'," + courseTypeID + ");";
+        return "(" + id +",'" + name +"'," + courseTypeID +"),";
     }
 
     public static ArrayList<Course> createCourses() throws FileNotFoundException {

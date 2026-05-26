@@ -52,8 +52,12 @@ public class SchoolClass {
         return id;
     }
 
+    public static String header(){
+        return  "INSERT INTO Classes VALUES";
+    }
+
     public String toString (){
-        return "INSERT INTO Classes VALUES(" + id +"," + room.id + "," + teacher.getID() + "," + courseParent.getId() + "," + period + ");";
+        return "(" + id +"," + room.id + "," + teacher.getId() + "," + courseParent.getId() + "," + period + "),";
     }
 
     public static ArrayList<SchoolClass> createClasses(ArrayList<Course> courseList, ArrayList<Room> roomList, ArrayList<Teacher> teacherList) throws FileNotFoundException {
@@ -102,16 +106,22 @@ public class SchoolClass {
 
 
     public static void createAndPrintGrades(ArrayList<Student> studentList, ArrayList<Assignment> assignmentList){
-        for (int i = 1; i < 5001; i++) {
-            Student CurrStudent = studentList.get(i-1);
+        String end = ",";
+        System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES");
+        for (int i = 0; i < 5000; i++) {
+            Student CurrStudent = studentList.get(i);
             Roster CurrRosterObj=CurrStudent.getRoster();
             ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
             for (int j = 0; j < 10; j++) {
                 for (int k = 0; k < 15; k++) {
+                    if (i == 4999 && j == 9 && k == 14){
+                        end = ";";
+                    }
+
                     SchoolClass CurrClass = CurrClassList.get(j);
                     Assignment currAssignment = CurrClass.getAssignments().get(k);
-                    System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                            + (int)(Math.random()* 25 + 75) + ","  + i + ","  + currAssignment.getId() + ");");
+                    System.out.println("("
+                            + (int)(Math.random()* 25 + 75) + ","  + (i+1) + ","  + currAssignment.getId() + ")" + end);
                 }
             }
         }

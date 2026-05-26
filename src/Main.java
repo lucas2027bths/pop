@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -24,18 +25,48 @@ public class Main {
     }
 
     private static void printInserts(SqlGenerator generator) {
-        generator.getRoomList().forEach(System.out::println);
-        System.out.println(Course.insertTypes());
-        System.out.println(Assignment.insertTypes());
-        generator.getDepartmentList().forEach(System.out::println);
-        generator.getCourseList().forEach(System.out::println);
-        generator.getTeacherList().forEach(System.out::println);
-        generator.getClassList().forEach(System.out::println);
-        generator.getRosterList().forEach(System.out::println);
-        generator.getStudentList().forEach(System.out::println);
-        generator.getAssignmentList().forEach(System.out::println);
-        SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
+
+        System.out.println(Room.header());
+        printObjects(generator.getRoomList());
+
+       System.out.println(Course.insertTypes());
+       System.out.println(Assignment.insertTypes());
+
+        System.out.println(Department.header());
+        printObjects(generator.getDepartmentList());
+
+        System.out.println(Course.header());
+        printObjects(generator.getCourseList());
+
+        System.out.println(Teacher.header());
+        printObjects(generator.getTeacherList());
+
+
+        System.out.println(SchoolClass.header());
+        printObjects(generator.getClassList());
+
+        System.out.println(Roster.header());
+        printObjects(generator.getRosterList());
+
+        System.out.println(Student.header());
+        printObjects(generator.getStudentList());
+
+        System.out.println(Assignment.header());
+        printObjects(generator.getAssignmentList());
+
+       SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
     }
+
+
+    private static void printObjects(ArrayList<?> objectArrayList){
+        int size = objectArrayList.size();
+        for (int x = 0 ; x < size-1; x++){
+            System.out.println(objectArrayList.get(x).toString());
+        }
+        String last = objectArrayList.get(size-1).toString();
+        System.out.println(last.substring(0,last.length()-1) + ";");
+    }
+
 
     private static String createSchema() throws FileNotFoundException {
         Scanner scan = new Scanner(new File(SqlGenerator.directory + "createSchema"));

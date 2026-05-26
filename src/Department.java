@@ -14,9 +14,14 @@ public class Department {
     public String getName(){
         return name;
     }
+
+    public static String header(){
+        return "INSERT INTO Departments VALUES";
+    }
+
     @Override
     public String toString(){
-        return "INSERT INTO Departments VALUES ("+ id +",'" + name +"');";
+        return "(" +id +",'" + name +"'),";
     }
 
     public static ArrayList<Department> createDepartments() throws FileNotFoundException {

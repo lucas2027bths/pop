@@ -48,9 +48,12 @@ public class Roster {
     public int getId() {
         return id;
     }
+
+    public static String header(){return "INSERT INTO Rosters(period1_ClassID, period2_ClassID, period3_ClassID, period4_ClassID, period5_ClassID, period6_ClassID, period7_ClassID, period8_ClassID, period9_ClassID, period10_ClassID) VALUES";}
+
     @Override
     public String toString() {
-        return "INSERT INTO Rosters(period1_ClassID, period2_ClassID, period3_ClassID, period4_ClassID, period5_ClassID, period6_ClassID, period7_ClassID, period8_ClassID, period9_ClassID, period10_ClassID) VALUES (" +
+        return "(" +
                 classes.get(0).getId() + "," +
                 classes.get(1).getId() + "," +
                 classes.get(2).getId() + "," +
@@ -60,7 +63,7 @@ public class Roster {
                 classes.get(6).getId() + "," +
                 classes.get(7).getId() + "," +
                 classes.get(8).getId() + "," +
-                classes.get(9).getId() + ");";
+                classes.get(9).getId() + "),";
     }
 
     public static ArrayList<Roster> createRosters (ArrayList<Student> studentList, ArrayList<SchoolClass> classList) throws FileNotFoundException {

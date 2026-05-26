@@ -34,8 +34,10 @@ public class Student {
         this.roster = roster;
     }
 
+    public static String header(){return "INSERT INTO Students(studentID, rosterID, first_name, last_name) VALUES";}
+
     public String toString(){
-        return "INSERT INTO Students(studentID, rosterID, first_name, last_name) VALUES ("+ id+ "," + roster.getId() +",'" + first + "','" + last +"');";
+        return "("+ id+ "," + roster.getId() +",'" + first + "','" + last +"'),";
     }
 
 
