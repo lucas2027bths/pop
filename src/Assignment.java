@@ -37,8 +37,8 @@ public class Assignment {
 
 
     public String toString(){
-       return "\"INSERT INTO Assignment(assignmentID, assignmentName, assignment_typeID, classID) VALUES" +
-                " (" + id + ",'" + name +"'," + type + "," + classId + ")\";";
+       return "INSERT INTO Assignment(assignmentID, assignmentName, assignment_typeID, classID) VALUES" +
+                " (" + id + ",'" + name +"'," + type + "," + classId + ");";
     }
 
     public static String insertTypes (){
