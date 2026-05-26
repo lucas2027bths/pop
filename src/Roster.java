@@ -1,14 +1,15 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Roster {
-    private int ID;
-    private ArrayList<SchoolClass> Classes;
+    private int id;
+    private ArrayList<SchoolClass> classes;
     private Student student;
 
 
     public Roster(Student student, ArrayList<SchoolClass> FullClassList,int ID) {
-        this.ID = ID;
-        Classes = new ArrayList<>();
+        this.id = ID;
+        classes = new ArrayList<>();
         this.student = student;
         for (int i = 1; i <= 10; i++) { // go through periods 1 to 10
             ArrayList<SchoolClass> ClassList = new ArrayList<>();
@@ -18,7 +19,7 @@ public class Roster {
                 }
             }
             int rand = (int) ( Math.random() * (ClassList.size() - 1) );
-            Classes.add(ClassList.get(rand)); // gets a random class and adds it to the student's roster list of classes
+            classes.add(ClassList.get(rand)); // gets a random class and adds it to the student's roster list of classes
             ClassList.get(rand).addStudents(student);
             student.setRoster(this);
         }
@@ -42,14 +43,40 @@ public class Roster {
 
     }
     public ArrayList<SchoolClass> getClasses(){
-        return Classes;
+        return classes;
     }
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
+
+    public static String header(){return "INSERT INTO Rosters(period1_ClassID, period2_ClassID, period3_ClassID, period4_ClassID, period5_ClassID, period6_ClassID, period7_ClassID, period8_ClassID, period9_ClassID, period10_ClassID) VALUES";}
+
     @Override
     public String toString() {
-        return "INSERT INTO Rosters(period1_ClassID, period2_ClassID, period3_ClassID, period4_ClassID, period5_ClassID, period6_ClassID, period7_ClassID, period8_ClassID, period9_ClassID, period10_ClassID) VALUES (" +Classes.get(0).getID() + "," +Classes.get(1).getID() + ","+Classes.get(2).getID() + ","+Classes.get(3).getID() + ","+Classes.get(4).getID() + ","+Classes.get(5).getID() + ","+Classes.get(6).getID() + ","+Classes.get(7).getID() + ","+Classes.get(8).getID() + ","+Classes.get(9).getID() +  ");";
+        return "(" +
+                classes.get(0).getId() + "," +
+                classes.get(1).getId() + "," +
+                classes.get(2).getId() + "," +
+                classes.get(3).getId() + "," +
+                classes.get(4).getId() + "," +
+                classes.get(5).getId() + "," +
+                classes.get(6).getId() + "," +
+                classes.get(7).getId() + "," +
+                classes.get(8).getId() + "," +
+                classes.get(9).getId() + "),";
+    }
+
+    public static ArrayList<Roster> createRosters (ArrayList<Student> studentList, ArrayList<SchoolClass> classList) throws FileNotFoundException {
+        ArrayList<Roster> rosterList = new ArrayList<>();
+
+        int maxStudents = studentList.size() / classList.size();
+        int ID = 1;
+        for (Student student : studentList) {
+            rosterList.add(new Roster(student,classList,ID));
+            ID++;
+        }
+
+        return rosterList;
     }
 }
 

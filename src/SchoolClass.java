@@ -1,59 +1,130 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SchoolClass {
     private String name;
-    public ArrayList<Student> Students;
-    private ArrayList<Assignment> ClassAssignment = new ArrayList<>();
-    private int ID;
+    public ArrayList<Student> students;
+    private ArrayList<Assignment> classAssignments = new ArrayList<>();
+    private int id;
     private Teacher teacher;
     private Room room;
     private int period;
-    private Course CourseParent; // the course that this school class belongs to
+    private Course courseParent; // the course that this school class belongs to
+    private static int assignmentId = 1;
 
-    public SchoolClass(int ID, Teacher teacher, Room room, int period, Course CourseParent){
-        this.name = CourseParent.getName() + period;
-        this.ID = ID;
+    public SchoolClass(int id, Teacher teacher, Room room, int period, Course courseParent){
+        this.name = courseParent.getName() + period;
+        this.id = id;
         this.teacher = teacher;
         this.room = room;
         this.period = period;
-        this.CourseParent = CourseParent;
-        Students = new ArrayList<>();
+        this.courseParent = courseParent;
+        students = new ArrayList<>();
 
     }
 
     public void addStudents (Student a){
-       Students.add(a);
+       students.add(a);
     }
     public void makeAssignments (){ // adds 12 minor assignments and 3 major assignments
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
-            ClassAssignment.add(new Assignment(1,i,AssignmentName));
-
+            classAssignments.add(new Assignment(1, assignmentId,AssignmentName,this.id));
+            assignmentId++;
         }
         for (int i = 12; i < 15; i++) {
             String AssignmentName = this.name + "work" + i;
-            ClassAssignment.add(new Assignment(2,i,AssignmentName));
+            classAssignments.add(new Assignment(2, assignmentId,AssignmentName,this.id));
+            assignmentId++;
+
         }
-//        for (int i = 0; i < ClassAssignment.size(); i++) {
-//            System.out.println("INSERT INTO Assignment(Name, Type, ClassID) VALUES" +
-//                    " (" + ClassAssignment.get(i).getName() + "," +ClassAssignment.get(i).getType() +"," + ID + ")\"");
-//        }
-        SqlGenerator.AssignmentList.addAll(ClassAssignment);
     }
     public ArrayList<Assignment> getAssignments(){
-        return ClassAssignment;
+        return classAssignments;
     }
 
     public int getPeriod() {
         return period;
     }
-    public int getID(){
-        return ID;
+    public int getId(){
+        return id;
+    }
+
+    public static String header(){
+        return  "INSERT INTO Classes VALUES";
     }
 
     public String toString (){
-        return "INSERT INTO Classes VALUES(" + ID +"," + room.ID + "," + teacher.getID() + "," + CourseParent.getID() + "," + period + ");";
+        return "(" + id +"," + room.id + "," + teacher.getId() + "," + courseParent.getId() + "," + period + "),";
+    }
+
+    public static ArrayList<SchoolClass> createClasses(ArrayList<Course> courseList, ArrayList<Room> roomList, ArrayList<Teacher> teacherList) throws FileNotFoundException {
+        ArrayList<SchoolClass> classList = new ArrayList<>();
+        Random ran = new Random();
+        int room = 0;
+        int teach = 0;
+        int period = 1;
+        int id = 1;
+        for (int x = 0; x < courseList.size(); x++){
+
+            int randomNum = ran.nextInt(1,5);
+            for (int y = 0; y < randomNum; y++){
+
+                if (period > 10){
+                    period = 1;
+                    room++;
+                }
+
+                Room currentRoom = roomList.get(room);
+                currentRoom.booked[period-1] = true;
+                Teacher currentTeacher = null;
+
+                for (int j = 0; j < teacherList.size(); j++){
+                    Teacher teacher = teacherList.get(j);
+                    if (!teacher.booked[period - 1]){
+                        teacher.booked[period-1] = true;
+                        currentTeacher = teacher;
+                        break;
+                    }
+                }
+
+                if (currentTeacher == null){
+                    System.out.println("something went wrong");
+                }
+                classList.add(new SchoolClass(id,currentTeacher,currentRoom,period,courseList.get(x)));
+                classList.get(classList.size()-1).makeAssignments();
+                id++;
+                period++;
+            }
+
+        }
+
+    return classList;
+    }
+
+
+    public static void createAndPrintGrades(ArrayList<Student> studentList, ArrayList<Assignment> assignmentList){
+        String end = ",";
+        System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES");
+        for (int i = 0; i < 5000; i++) {
+            Student CurrStudent = studentList.get(i);
+            Roster CurrRosterObj=CurrStudent.getRoster();
+            ArrayList<SchoolClass> CurrClassList= CurrRosterObj.getClasses();
+            for (int j = 0; j < 10; j++) {
+                for (int k = 0; k < 15; k++) {
+                    if (i == 4999 && j == 9 && k == 14){
+                        end = ";";
+                    }
+
+                    SchoolClass CurrClass = CurrClassList.get(j);
+                    Assignment currAssignment = CurrClass.getAssignments().get(k);
+                    System.out.println("("
+                            + (int)(Math.random()* 25 + 75) + ","  + (i+1) + ","  + currAssignment.getId() + ")" + end);
+                }
+            }
+        }
     }
 
 //    public void giveGrade(){
