@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -8,7 +9,8 @@ public class Main {
         SqlGenerator generator = new SqlGenerator();
         printInserts(generator);
     }
-    private static void setLocationAndSchema() { // adjusts for operating system and username
+
+    private static void setLocationAndSchema() throws FileNotFoundException { // adjusts for operating system and username
         String osName = getOperating();
         if (osName.equals("Linux")) {
             String username = System.getProperty("user.name");
@@ -34,8 +36,8 @@ public class Main {
         SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
     }
 
-    private static String createSchema() {
-        Scanner scan = new Scanner(SqlGenerator.directory + "createSchema");
+    private static String createSchema() throws FileNotFoundException {
+        Scanner scan = new Scanner(new File(SqlGenerator.directory + "createSchema"));
         String schema = "";
 
         while (scan.hasNextLine()){

@@ -1,4 +1,4 @@
-CREATE TABLE Rooms (
+            CREATE TABLE Rooms (
                 roomID   int PRIMARY KEY AUTO_INCREMENT,
                 location varchar(5)
             );
