@@ -11,7 +11,8 @@ public class SchoolClass {
     private Room room;
     private int period;
     private Course courseParent; // the course that this school class belongs to
-    private static int assignmentID = 1;
+    private static int assignmentId = 1;
+    private static int gradeId = 1;
 
     public SchoolClass(int id, Teacher teacher, Room room, int period, Course courseParent){
         this.name = courseParent.getName() + period;
@@ -31,13 +32,13 @@ public class SchoolClass {
         /// this SHOULD ONLY RUN ONCE
         for (int i = 0; i < 12; i++) {
             String AssignmentName = this.name + "work" + i;
-            classAssignments.add(new Assignment(1,assignmentID,AssignmentName,this.id));
-            assignmentID++;
+            classAssignments.add(new Assignment(1, assignmentId,AssignmentName,this.id));
+            assignmentId++;
         }
         for (int i = 12; i < 15; i++) {
             String AssignmentName = this.name + "work" + i;
-            classAssignments.add(new Assignment(2,assignmentID,AssignmentName,this.id));
-            assignmentID++;
+            classAssignments.add(new Assignment(2, assignmentId,AssignmentName,this.id));
+            assignmentId++;
 
         }
     }
@@ -111,7 +112,8 @@ public class SchoolClass {
                     SchoolClass CurrClass = CurrClassList.get(j);
                     Assignment currAssignmentId =CurrClass.getAssignments().get(k);
                     System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
-                            + (int)(Math.random()* 25 + 75) + ","  + i + ","  +  assignmentList.indexOf(currAssignmentId) + 1 + ");");
+                            + (int)(Math.random()* 25 + 75) + ","  + i + ","  +  assignmentList.indexOf(currAssignmentId) + 1 + "," + gradeId + ");");
+                    gradeId++;
                 }
             }
         }
