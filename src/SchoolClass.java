@@ -12,7 +12,6 @@ public class SchoolClass {
     private int period;
     private Course courseParent; // the course that this school class belongs to
     private static int assignmentId = 1;
-    private static int gradeId = 1;
 
     public SchoolClass(int id, Teacher teacher, Room room, int period, Course courseParent){
         this.name = courseParent.getName() + period;
@@ -113,7 +112,6 @@ public class SchoolClass {
                     Assignment currAssignment = CurrClass.getAssignments().get(k);
                     System.out.println("INSERT INTO Grades(Grade, studentID,assignmentID) VALUES("
                             + (int)(Math.random()* 25 + 75) + ","  + i + ","  + currAssignment.getId() + ");");
-                    gradeId++;
                 }
             }
         }
