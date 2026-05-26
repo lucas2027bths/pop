@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Department {
-    private int ID;
+    private int id;
     private String name;
 
-    public Department(int ID, String name){
-        this.ID = ID;
+    public Department(int id, String name){
+        this.id = id;
         this.name = name;
     }
     public String getName(){
@@ -16,7 +16,7 @@ public class Department {
     }
     @Override
     public String toString(){
-        return "INSERT INTO Departments VALUES ("+ID+",'" + name +"');";
+        return "INSERT INTO Departments VALUES ("+ id +",'" + name +"');";
     }
 
     public static ArrayList<Department> createDepartments() throws FileNotFoundException {

@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -9,13 +8,13 @@ public class Teacher {
     private int ID;
     private String first;
     private String last;
-    private int DEPTID;
+    private int deptid;
     public boolean[] booked; // boolean used to check if a teacher is book for a certain period
     public Teacher(int ID, String first, String last, int DEPTID){
         this.ID = ID;
         this.first = first;
         this.last = last;
-        this.DEPTID = DEPTID;
+        this.deptid = DEPTID;
         booked = new boolean[10];
     }
 
@@ -25,7 +24,7 @@ public class Teacher {
 
     @Override
     public String toString(){
-        return "INSERT INTO Teachers (ID,first_name,last_name,departmentID) VALUES(" + ID + ",'" + first + "','" + last + "'," + DEPTID + ")";
+        return "INSERT INTO Teachers (ID,first_name,last_name,departmentID) VALUES(" + ID + ",'" + first + "','" + last + "'," + deptid + ")";
     }
 
 

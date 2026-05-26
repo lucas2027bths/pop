@@ -5,22 +5,22 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Course {
-    private int ID;
+    private int id;
     private String name;
-    private int course_type_ID;
+    private int courseTypeID;
 
     public Course(int ID, String name , int course_type_ID){
-        this.ID = ID;
+        this.id = ID;
         this.name = name;
-        this.course_type_ID = course_type_ID;
+        this.courseTypeID = course_type_ID;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public static String insertTypes (){
@@ -30,7 +30,7 @@ public class Course {
     }
     @Override
     public String toString(){
-        return "INSERT INTO Courses VALUES ("+ID+",'" + name +"'," + course_type_ID + ");";
+        return "INSERT INTO Courses VALUES ("+ id +",'" + name +"'," + courseTypeID + ");";
     }
 
     public static ArrayList<Course> createCourses() throws FileNotFoundException {

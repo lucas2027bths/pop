@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class Room {
-    public int ID;
+    public int id;
     private String location;
     public boolean[] booked;
 
-    public Room(int ID, String name){
-        this.ID = ID;
+    public Room(int id, String name){
+        this.id = id;
         this.location = name;
         booked = new boolean[10];
     }
@@ -14,7 +14,7 @@ public class Room {
 
     @Override
     public String toString(){
-        return "INSERT INTO Rooms VALUES ("+ID+",'" + location +"');";
+        return "INSERT INTO Rooms VALUES ("+ id +",'" + location +"');";
     }
 
     public static ArrayList<Room> createRooms(){
