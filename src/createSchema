@@ -94,7 +94,6 @@
                 Grade        int,
                 studentID    int,
                 assignmentID int,
-                gradeID      int PRIMARY KEY AUTO_INCREMENT,
                 CONSTRAINT fk_assignmentID
                     FOREIGN KEY (assignmentID) REFERENCES Assignments(assignmentID),
                 CONSTRAINT fk_studentID
