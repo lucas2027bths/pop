@@ -17,7 +17,7 @@ public class Room {
         return "INSERT INTO Rooms VALUES ("+ID+",'" + location +"');";
     }
 
-    public static ArrayList<Room> roomCreator(){
+    public static ArrayList<Room> createRooms(){
         ArrayList<Room> roomList = new ArrayList<>();
         int id = 1;
         for (int floor = 0; floor <= 8;floor++){

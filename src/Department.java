@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,11 +19,11 @@ public class Department {
         return "INSERT INTO Departments VALUES ("+ID+",'" + name +"');";
     }
 
-    public static ArrayList<Department> createDepartments(){
+    public static ArrayList<Department> createDepartments() throws FileNotFoundException {
 
         ArrayList<Department> departmentList = new ArrayList<>();
 
-        Scanner scan = new Scanner(new File(location+"departments"));
+        Scanner scan = new Scanner(new File(SqlGenerator.directory +"departments"));
         int id = 1;
 
         while (scan.hasNextLine()) {
@@ -33,7 +34,7 @@ public class Department {
             departmentList.add(new Department(id,name));
             id++;
         }
-
+    return departmentList;
 
     }
 

@@ -1,36 +1,60 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.AbstractCollection;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 public class SqlGenerator {
 
+    private ArrayList<Department> departmentList = new ArrayList<>();
+    private ArrayList<Teacher> teacherList = new ArrayList<>();
+    private ArrayList<Room> roomList = new ArrayList<>();
+    private ArrayList<Course> courseList = new ArrayList<>();
+    private ArrayList<Student> studentList = new ArrayList<>();
+    private ArrayList<SchoolClass> classList = new ArrayList<>();
+    private ArrayList<Roster> rosterList = new ArrayList<>();
+    private ArrayList<Assignment> assignmentList = new ArrayList<>();
+    public static String directory = "src/";
 
-    //Lists
-    public ArrayList<Department> DepartmentList = new ArrayList<>();
-    public ArrayList<Teacher> TeacherList = new ArrayList<>();
-    public ArrayList<Room> RoomList = new ArrayList<>();
-    public ArrayList<Course> CourseList = new ArrayList<>();
-    public ArrayList<Student> StudentList = new ArrayList<>();
-    public ArrayList<SchoolClass> ClassList = new ArrayList<>();
-    public ArrayList<Roster> RosterList = new ArrayList<>();
-    public static ArrayList<Assignment> AssignmentList = new ArrayList<>();
-    static String location = "src/";
+    public SqlGenerator() throws FileNotFoundException {
 
+        roomList = Room.createRooms();
+        departmentList = Department.createDepartments();
+        teacherList = Teacher.createTeachers(departmentList);
+        courseList = Course.createCourses();
+        classList = SchoolClass.createClasses(courseList,roomList,teacherList);
+        studentList = Student.createStudents();
+        rosterList = Roster.createRosters(studentList,classList);
+        assignmentList = Assignment.createAssignmentList(classList);
 
+    }
 
+    public ArrayList<Assignment> getAssignmentList() {
+        return assignmentList;
+    }
 
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
 
+    public ArrayList<Department> getDepartmentList() {
+        return departmentList;
+    }
 
+    public ArrayList<Room> getRoomList() {
+        return roomList;
+    }
 
-    public void rosterInitializer  () throws FileNotFoundException {  //TODO MIGRATE THIS TO ROSTER CLASS
-        int maxStudents = StudentList.size() / ClassList.size();
-        int ID = 1;
-        for (Student student : StudentList) {
-            RosterList.add(new Roster(student,ClassList,ID));
-            ID++;
-        }
+    public ArrayList<Roster> getRosterList() {
+        return rosterList;
+    }
+
+    public ArrayList<SchoolClass> getClassList() {
+        return classList;
+    }
+
+    public ArrayList<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
+    public ArrayList<Student> getStudentList() {
+        return studentList;
     }
 }

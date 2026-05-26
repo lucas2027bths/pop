@@ -37,8 +37,6 @@ public class SchoolClass {
             String AssignmentName = this.name + "work" + i;
             ClassAssignment.add(new Assignment(2,i,AssignmentName));
         }
-
-        SqlGenerator.AssignmentList.addAll(ClassAssignment);
     }
     public ArrayList<Assignment> getAssignments(){
         return ClassAssignment;

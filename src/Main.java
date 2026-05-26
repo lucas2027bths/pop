@@ -1,25 +1,17 @@
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         setLocationAndSchema();
-        //initialize all the arrayLists / data
         SqlGenerator generator = new SqlGenerator();
-//        generator.roomInitializer();
-//        generator.departmentsAndTeacherInitializer();
-//        generator.courseInitializer();
-//        generator.classesInitializer();
-//        generator.studentInitializer();
-//        generator.rosterInitializer();
-//        printInserts(generator);
-//        generator.GradeInitializer();
     }
     private static void setLocationAndSchema() { // adjusts for operating system and username
         String osName = getOperating();
         if (osName.equals("Linux")) {
             String username = System.getProperty("user.name");
-            SqlGenerator.location = "/home/" + username + "/pop/src/"; //set the location for files differently if on unix server
+            SqlGenerator.directory = "/home/" + username + "/pop/src/"; //set the location for files differently if on unix server
             System.out.println(createSchema()); //add the create schema if being ran on the server
         }
     }
@@ -29,18 +21,29 @@ public class Main {
     }
 
     private static void printInserts(SqlGenerator generator) {
-        generator.RoomList.forEach(System.out::println); // for each alot cleaner than 1 billion for loops
+        generator.getRoomList().forEach(System.out::println);
         System.out.println(Course.insertTypes());
         System.out.println(Assignment.insertTypes());
-        generator.DepartmentList.forEach(System.out::println);
-        generator.CourseList.forEach(System.out::println);
-        generator.TeacherList.forEach(System.out::println);
-        generator.ClassList.forEach(System.out::println);
-        generator.RosterList.forEach(System.out::println);
-        generator.StudentList.forEach(System.out::println);
+        generator.getDepartmentList().forEach(System.out::println);
+        generator.getCourseList().forEach(System.out::println);
+        generator.getTeacherList().forEach(System.out::println);
+        generator.getClassList().forEach(System.out::println);
+        generator.getRosterList().forEach(System.out::println);
+        generator.getStudentList().forEach(System.out::println);
+        SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
     }
 
     private static String createSchema() {
-        file
+        Scanner scan = new Scanner(SqlGenerator.directory + "createSchema");
+        String schema = "";
+
+        while (scan.hasNextLine()){
+
+            schema += scan.nextLine();
+
+        }
+
+        return schema;
+
     }
 }

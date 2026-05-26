@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Roster {
@@ -59,6 +60,18 @@ public class Roster {
                 "        period9_ClassID ," +
                 "        period10_ClassID) " +
                 " VALUES (" +Classes.get(0).getID() + "," +Classes.get(1).getID() + ","+Classes.get(2).getID() + ","+Classes.get(3).getID() + ","+Classes.get(4).getID() + ","+Classes.get(5).getID() + ","+Classes.get(6).getID() + ","+Classes.get(7).getID() + ","+Classes.get(8).getID() + ","+Classes.get(9).getID() +  ");";
+    }
+    public static ArrayList<Roster> createRosters(ArrayList<Student> studentList, ArrayList<SchoolClass> classList) throws FileNotFoundException {  //TODO MIGRATE THIS TO ROSTER CLASS
+        ArrayList<Roster> rosterList = new ArrayList<>();
+
+        int maxStudents = studentList.size() / classList.size();
+        int ID = 1;
+        for (Student student : studentList) {
+            rosterList.add(new Roster(student,classList,ID));
+            ID++;
+        }
+
+        return rosterList;
     }
 }
 

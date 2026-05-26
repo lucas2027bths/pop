@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Assignment {
     private int type;
     private String name;
@@ -19,6 +21,19 @@ public class Assignment {
     public String getName() {
         return name;
     }
+
+    public static ArrayList<Assignment> createAssignmentList(ArrayList<SchoolClass> classList){
+        ArrayList<Assignment> assignmentList = new ArrayList<>();
+        for (SchoolClass cur : classList) {
+
+            assignmentList.addAll(cur.getAssignments());
+
+        }
+
+        return assignmentList;
+
+    }
+
 
     public String toString(){
        return "\"INSERT INTO Assignment(Name, Type, ClassID) VALUES" +

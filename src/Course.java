@@ -37,7 +37,7 @@ public class Course {
 
         ArrayList<Course> courseList = new ArrayList<>();
 
-        Scanner scan = new Scanner (new File(location+"courses"));
+        Scanner scan = new Scanner (new File(SqlGenerator.directory +"courses"));
         int x = 1;
         while(scan.hasNextLine()){
             String name = scan.nextLine();
