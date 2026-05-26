@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,14 +29,12 @@ public class Teacher {
     }
 
 
-    public static ArrayList<Teacher> createTeachers(ArrayList<Department> departments){
+    public static ArrayList<Teacher> createTeachers(ArrayList<Department> departments) throws FileNotFoundException {
         ArrayList<Teacher> teacherList = new ArrayList<>();
-        Scanner scan = new Scanner(new File(location+"teachers"));
+        Scanner scan = new Scanner(new File(SqlGenerator.directory+"teachers"));
         int id = 1;
 
         for (int currentDeptIndex = 0; currentDeptIndex < departments.size(); currentDeptIndex++){
-            String departmentName = departments.get(currentDeptIndex).getName();
-            departments.add(new Department(currentDeptIndex+1,departmentName));
 
             while (scan.hasNextLine()) {
                 String name = scan.nextLine();

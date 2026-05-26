@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         setLocationAndSchema();
         SqlGenerator generator = new SqlGenerator();
+        printInserts(generator);
     }
     private static void setLocationAndSchema() { // adjusts for operating system and username
         String osName = getOperating();

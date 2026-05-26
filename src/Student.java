@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,9 +39,9 @@ public class Student {
     }
 
 
-    public static ArrayList<Student> createStudents(){
+    public static ArrayList<Student> createStudents() throws FileNotFoundException {
         ArrayList<Student> studentList = new ArrayList<>();
-        Scanner scan = new Scanner(new File(location+"students"));
+        Scanner scan = new Scanner(new File(SqlGenerator.directory+"students"));
         int count = 1;
         while(scan.hasNextLine()){
             String[] name = scan.nextLine().split(" ");
