@@ -50,18 +50,20 @@ public class Roster {
     }
     @Override
     public String toString() {
-        return "INSERT INTO Rosters(period1_ClassID ,period2_ClassID ," +
-                "        period3_ClassID ," +
-                "        period4_ClassID ," +
-                "        period5_ClassID ," +
-                "        period6_ClassID ," +
-                "        period7_ClassID ," +
-                "        period8_ClassID ," +
-                "        period9_ClassID ," +
-                "        period10_ClassID) " +
-                " VALUES (" + classes.get(0).getId() + "," + classes.get(1).getId() + ","+ classes.get(2).getId() + ","+ classes.get(3).getId() + ","+ classes.get(4).getId() + ","+ classes.get(5).getId() + ","+ classes.get(6).getId() + ","+ classes.get(7).getId() + ","+ classes.get(8).getId() + ","+ classes.get(9).getId() +  ");";
+        return "INSERT INTO Rosters(period1_ClassID, period2_ClassID, period3_ClassID, period4_ClassID, period5_ClassID, period6_ClassID, period7_ClassID, period8_ClassID, period9_ClassID, period10_ClassID) VALUES (" +
+                classes.get(0).getId() + "," +
+                classes.get(1).getId() + "," +
+                classes.get(2).getId() + "," +
+                classes.get(3).getId() + "," +
+                classes.get(4).getId() + "," +
+                classes.get(5).getId() + "," +
+                classes.get(6).getId() + "," +
+                classes.get(7).getId() + "," +
+                classes.get(8).getId() + "," +
+                classes.get(9).getId() + ");";
     }
-    public static ArrayList<Roster> createRosters(ArrayList<Student> studentList, ArrayList<SchoolClass> classList) throws FileNotFoundException {  //TODO MIGRATE THIS TO ROSTER CLASS
+
+    public static ArrayList<Roster> createRosters (ArrayList<Student> studentList, ArrayList<SchoolClass> classList) throws FileNotFoundException {
         ArrayList<Roster> rosterList = new ArrayList<>();
 
         int maxStudents = studentList.size() / classList.size();
