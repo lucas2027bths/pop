@@ -33,6 +33,7 @@ public class Main {
         generator.getClassList().forEach(System.out::println);
         generator.getRosterList().forEach(System.out::println);
         generator.getStudentList().forEach(System.out::println);
+        generator.getAssignmentList().forEach(System.out::println);
         SchoolClass.createAndPrintGrades(generator.getStudentList(),generator.getAssignmentList());
     }
 
